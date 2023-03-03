@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:18:21 by yjaadoun          #+#    #+#             */
-/*   Updated: 2021/11/25 21:10:33 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:44:56 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i] != '\0')
-	{
 		i++;
-	}
 	return (i);
 }

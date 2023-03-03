@@ -6,7 +6,7 @@
 #    By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 12:10:58 by yjaadoun          #+#    #+#              #
-#    Updated: 2023/03/03 16:40:33 by yjaadoun         ###   ########.fr        #
+#    Updated: 2023/03/03 19:39:11 by yjaadoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = cub3D
 
 CC = cc
 
-C_FLAGS = -Wall -Wextra -Werror
+C_FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
@@ -27,15 +27,15 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@cd libft && make all
-	$(CC) $(C_FLAGS) $(MLX_FLAGS) libft/libft.a $(OBJ) -o $(NAME)
+	@$(CC) $(C_FLAGS) $(MLX_FLAGS) libft/libft.a $(OBJ) -o $(NAME)
 
 clean: 
 	@cd libft && make clean
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
 	@cd libft && make fclean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 	

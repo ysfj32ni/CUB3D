@@ -6,16 +6,18 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 13:36:44 by yjaadoun          #+#    #+#             */
-/*   Updated: 2021/11/29 13:58:09 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:03:12 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define BUFFER_SIZE 1024
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -51,5 +53,9 @@ char	*ft_strtrim(char const *s1, char const *set);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+char	*get_next_line(int fd);
+char	*ft_get_line(char *save, int i);
+char	*read_and_save(int fd, char *save);
+char	*ft_saving(char *save);
 
 #endif

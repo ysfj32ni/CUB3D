@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:47:45 by yjaadoun          #+#    #+#             */
-/*   Updated: 2021/11/29 14:17:45 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:45:11 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ char	*ft_strchr(const char *str, int c)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0' || c == '\0')
+	if (!str)
+		return (NULL);
+	while (str[i] != '\0')
 	{
 		if (str[i] == (char)c)
 			return ((char *)str + i);

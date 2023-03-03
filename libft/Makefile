@@ -6,7 +6,7 @@
 #    By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 22:12:27 by yjaadoun          #+#    #+#              #
-#    Updated: 2021/11/29 11:42:07 by yjaadoun         ###   ########.fr        #
+#    Updated: 2023/03/03 19:05:11 by yjaadoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRC = ft_atoi.c			\
 		ft_putendl_fd.c	\
 		ft_putnbr_fd.c	\
 		ft_split.c		\
+		get_next_line.c \
 
 CC = cc
 
@@ -57,12 +58,12 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
+	@ar -rcs $(NAME) $(OBJ)
 
 clean: 
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
