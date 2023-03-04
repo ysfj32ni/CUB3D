@@ -6,7 +6,7 @@
 #    By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 12:10:58 by yjaadoun          #+#    #+#              #
-#    Updated: 2023/03/03 19:39:11 by yjaadoun         ###   ########.fr        #
+#    Updated: 2023/03/04 17:28:53 by yjaadoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = cub3D
 
 CC = cc
 
-C_FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+C_FLAGS = -Wall -Wextra -Werror -g -fsanitize=address -D
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 

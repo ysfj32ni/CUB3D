@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:16:04 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/03 20:51:10 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/04 20:53:17 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,9 @@ char	*get_next_line(int fd)
 {
 	int			i;
 	char		*line;
-	char static	*save;
+	char static	*save = 0;
 
 	i = 0;
-	save = ft_strdup("");
-	
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	save = read_and_save(fd, save);
