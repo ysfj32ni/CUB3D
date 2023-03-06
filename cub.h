@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:11:15 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/04 20:58:48 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:11:37 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,22 @@
 # include <fcntl.h>
 # define TRUE 1
 # define FALSE 0
+# define SPACE 32
+# define TAB  9
 
 typedef int	t_bool;
 
-typedef struct s_data
+typedef struct s_map
 {
 	char		**line;
-}	t_data;
+	char		*no_path;
+	char		*so_path;
+	char		*we_path;
+	char		*ea_path;
+	char		*f_color;
+	char		*c_color;
+	char		**map;
+}	t_map;
 
 // ----------> PARSING <---------- //
 
