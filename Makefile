@@ -6,28 +6,32 @@
 #    By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 12:10:58 by yjaadoun          #+#    #+#              #
-#    Updated: 2023/03/04 17:28:53 by yjaadoun         ###   ########.fr        #
+#    Updated: 2023/03/08 14:46:48 by yjaadoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = cub.c
+SRC = cub.c \
+	cub_utiles1.c \
+	map_elements.c \
+	map.c \
+	reading_map.c \
 
+	
 NAME = cub3D
 
 CC = cc
 
-C_FLAGS = -Wall -Wextra -Werror -g -fsanitize=address -D
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address 
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 OBJ =  $(SRC:.c=.o)
 
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@cd libft && make all
-	@$(CC) $(C_FLAGS) $(MLX_FLAGS) libft/libft.a $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(MLX_FLAGS) libft/libft.a $(OBJ) -o $(NAME)
 
 clean: 
 	@cd libft && make clean

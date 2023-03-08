@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:11:15 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/06 16:11:37 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:30:52 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 
 typedef int	t_bool;
 
+typedef struct s_alloc_lst
+{
+	void				*content;
+	struct s_alloc_lst	*next;
+}	t_alloc_lst;
+
 typedef struct s_map
 {
 	char		**line;
@@ -38,8 +44,19 @@ typedef struct s_map
 	char		*f_color;
 	char		*c_color;
 	char		**map;
+	t_alloc_lst	**alloc_list;
 }	t_map;
 
 // ----------> PARSING <---------- //
+t_bool	check_path(char *av);
+t_bool	check_border(char *line);
+t_bool	check_elements(char **map);
+void	map_elements(t_map *map);
+void	print_2d(char **str);
+void	exit_error(char	*str);
+char	**get_map(char *av);
+int		skip_spaces_begin(char *str);
+int	doble_arr_len(char **str);
+void	check_colors(char *str);
 
 #endif
