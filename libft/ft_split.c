@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 12:28:45 by yjaadoun          #+#    #+#             */
-/*   Updated: 2021/11/28 22:55:19 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/08 21:59:17 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ static int	nb_words(char const *str, char c)
 	while (str[i])
 	{
 		if (str[i] == c)
-		{
 			s = 1;
-		}
 		else if (s == 1)
 		{
 			s = 0;

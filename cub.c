@@ -24,16 +24,22 @@ void	initialisation(t_map *map)
 	map->f_color = NULL;
 }
 
+void	checking_map(t_map *map)
+{
+	map_elements(map);
+	player_position(map);
+	check_border(map);
+	is_map_valid(map);
+}
+
 t_map	*parsing(char *av)
 {
-	t_map *map;
- 
+	t_map	*map;
+
 	map = malloc(sizeof(t_map));
 	initialisation(map);
 	map->line = get_map(av);
-	map_elements(map);
-	check_elements(map->map);
-	// print_2d(map->map);
+	checking_map(map);
 	return (map);
 }
 
@@ -46,9 +52,6 @@ int	main(int ac, char **av)
 		if (!check_path(av[1]))
 			exit_error("ERROR : PATH must be *.cub\n");
 		map = parsing(av[1]);
-		// printf("---------------------------\n");
-		// print_2d(map->map);
-		// printf("---------------------------\n");
 	}
 	else
 		exit_error("ERROR : Enought args [./cub3D map.cub]\n");

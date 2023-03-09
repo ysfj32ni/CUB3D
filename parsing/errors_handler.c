@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   errors_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 09:47:45 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/09 02:17:50 by yjaadoun         ###   ########.fr       */
+/*   Created: 2023/03/08 22:03:32 by yjaadoun          #+#    #+#             */
+/*   Updated: 2023/03/09 21:56:14 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../cub.h"
 
-char	*ft_strchr(const char *str, int c)
+t_bool	is_map_valid(t_map *map)
 {
 	int	i;
+	int	j;
 
-	i = 0;
-	if (!str || !c)
-		return (NULL);
-	while (str[i] != '\0')
+	i = 1;
+	while (map->map[i] != NULL)
 	{
-		if (str[i] == (char)c)
-			return ((char *)str + i);
+		j = 1;
+		while (map->map[i][j] != '\0')
+		{
+			if (map->map[i][j] == '0')
+			{
+				if (!ft_strchr("01", map->map[i][j + 1])
+					|| !ft_strchr("01", map->map[i][j - 1])
+					|| !ft_strchr("01", map->map[i - 1][j])
+					|| !ft_strchr("01", map->map[i + 1][j]))
+					return (FALSE);
+			}	
+			j++;
+		}
 		i++;
 	}
-	return (NULL);
+	return (TRUE);
 }

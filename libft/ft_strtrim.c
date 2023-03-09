@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 12:05:19 by yjaadoun          #+#    #+#             */
-/*   Updated: 2021/11/29 13:59:18 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:23:03 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static	int	check_char(char const *str, char c)
 			res = 1;
 			break ;
 		}
-		else
 		i++;
 	}
 	return (res);

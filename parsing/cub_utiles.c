@@ -6,11 +6,11 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 18:46:35 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/06 20:59:44 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:26:59 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
 void	ft_lstclear(t_alloc_lst **lst)
 {

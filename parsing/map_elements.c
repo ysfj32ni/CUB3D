@@ -6,11 +6,11 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:01:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/08 14:43:05 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:26:59 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
 int	skip_spaces_begin(char *str)
 {
@@ -62,7 +62,6 @@ void	filling_map(t_map *map)
 
 	i = 6;
 	j = 0;
-
 	map->map = malloc(sizeof(char *) * (doble_arr_len(map->line) - 5));
 	while (map->line[i] != NULL)
 	{

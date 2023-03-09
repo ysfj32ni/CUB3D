@@ -6,11 +6,11 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:59:08 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/08 14:32:05 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:57:00 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
 void	print_2d(char **str)
 {

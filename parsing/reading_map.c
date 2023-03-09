@@ -6,11 +6,11 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:57:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/08 13:21:48 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:26:59 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
 t_bool	check_path(char *av)
 {
@@ -34,7 +34,7 @@ char	**get_map(char *av)
 
 	fd = open(av, O_RDWR);
 	if (fd < 0)
-		exit_error("ERROR : PATH of map\n");
+		exit_error("ERROR : no such file\n");
 	buf = 0;
 	current = get_next_line(fd);
 	while (current)

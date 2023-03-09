@@ -6,24 +6,54 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:22:31 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/08 14:54:16 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:57:45 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
-// TO DO : check square border if 1
-t_bool	check_border(char *line)
+t_bool	check_top_bottom(char *line)
 {
 	int	i;
 
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i] != '1' && line[i] != ' ' && line[i] != '\t')
-			exit_error("ERROR : border map \n");
+		if (line[i] != '1' && line[i] != SPACE && line[i] != TAB)
+			return (FALSE);
 		i++;
 	}
+	return (TRUE);
+}
+
+t_bool	check_border_left_right(char **map)
+{
+	int	i;
+	int	j;
+	int	len;
+
+	i = 0;
+	j = 0;
+	while (map[i] != NULL)
+	{
+		len = ft_strlen(map[i]);
+		if ((map[i][0] != '1' && map[i][0] != SPACE && map[i][0] != TAB)
+			|| (map[i][len - 1] != '1' && map[i][len - 1] != SPACE
+			&& map[i][len - 1] != TAB))
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}	
+
+t_bool	check_border(t_map *map)
+{
+	int	len;
+
+	len = doble_arr_len(map->map);
+	if (!check_top_bottom(map->map[0]) || !check_top_bottom(map->map[len -1])
+		|| !check_border_left_right(map->map))
+		exit_error("ERROR : unclosed map\n");
 	return (TRUE);
 }
 
@@ -53,6 +83,31 @@ t_bool	check_elements(char **map)
 	return (TRUE);
 }
 
+void	player_position(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map->map[i] != NULL)
+	{
+		j = 0;
+		while (map->map[i][j] != '\0')
+		{
+			if (ft_strchr("NSEW", map->map[i][j]))
+			{
+				map->x_player = i;
+				map->y_player = j;
+				map->start_pos = map->map[i][j];
+				map->map[i][j] = '0';
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 // TO DO : space between | is_alpha | 
 void	check_colors(char *str)
 {
@@ -69,5 +124,4 @@ void	check_colors(char *str)
 	}
 	if (i != 3)
 		exit_error("ERROR : invalid color code N˚\n");
-	// print_2d(div);
 }
