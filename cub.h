@@ -51,6 +51,18 @@ typedef struct s_map
 	t_alloc_lst	**alloc_list;
 }	t_map;
 
+typedef struct s_data{
+	void	*mlx;
+	void	*img;
+	void	*win;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}	t_data;
+
 // ----------> PARSING <---------- //
 t_bool	check_path(char *av);
 t_bool	check_border(t_map *map);
@@ -68,4 +80,9 @@ char	**get_map(char *av);
 int		skip_spaces_begin(char *str);
 int		doble_arr_len(char **str);
 int		longest_line(char **map);
+
+// ----------> DRAWING <---------- //
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int	draw_map(t_data *img, t_map	*map);
+
 #endif

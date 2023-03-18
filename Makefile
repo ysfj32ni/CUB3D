@@ -17,6 +17,7 @@ SRC = cub.c \
 	parsing/reading_map.c \
 	parsing/errors_handler.c \
 	parsing/parisng.c \
+	drawing/2d_map.c
 
 	
 NAME = cub3D
