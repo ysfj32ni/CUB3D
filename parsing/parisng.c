@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_handler.c                                   :+:      :+:    :+:   */
+/*   parisng.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 22:03:32 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/18 13:51:43 by yjaadoun         ###   ########.fr       */
+/*   Created: 2023/03/18 13:56:12 by yjaadoun          #+#    #+#             */
+/*   Updated: 2023/03/18 13:57:28 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-// TO DO SGFT 
-t_bool	is_map_valid(t_map *map)
+void	initialisation(t_map *map)
 {
-	int	i;
-	int	j;
+	map->line = NULL;
+	map->map = NULL;
+	map->so_path = NULL;
+	map->we_path = NULL;
+	map->ea_path = NULL;
+	map->no_path = NULL;
+	map->c_color = NULL;
+	map->f_color = NULL;
+	map->long_line = 0;
+}
 
-	i = 1;
-	while (map->map[i] != NULL)
-	{
-		j = 1;
-		while (map->map[i][j] != '\0')
-		{
-			if (map->map[i][j] == '0')
-			{
-				if (!ft_strchr("01", map->map[i][j + 1])
-					|| !ft_strchr("01", map->map[i][j - 1])
-					|| !ft_strchr("01", map->map[i - 1][j])
-					|| !ft_strchr("01", map->map[i + 1][j]))
-					return (FALSE);
-			}	
-			j++;
-		}
-		i++;
-	}
-	return (TRUE);
+t_map	*parsing(char *av)
+{
+	t_map	*map;
+
+	map = malloc(sizeof(t_map));
+	initialisation(map);
+	map->line = get_map(av);
+	map_elements(map);
+	check_border(map);
+	return (map);
 }

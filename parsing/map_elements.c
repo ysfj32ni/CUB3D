@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:01:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/09 16:26:59 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/18 13:53:08 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,6 @@ void	map_elements(t_map *map)
 {
 	color_textures(map);
 	filling_map(map);
+	player_position(map);
+	map->long_line = longest_line(map->map);
 }

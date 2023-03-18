@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:57:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/09 16:26:59 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/18 13:28:14 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 t_bool	check_path(char *av)
 {
 	int		i;
-	char	*test;
+	char	*extension;
 
 	i = 0;
-	test = ft_strnstr(av, ".cub", ft_strlen(av));
-	if (test && ft_strlen(test) == 4)
+	extension = ft_strnstr(av, ".cub", ft_strlen(av));
+	if (extension && ft_strlen(extension) == 4)
 		return (TRUE);
 	else
 		return (FALSE);

@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:59:08 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/09 21:57:00 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/18 13:58:21 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,24 @@ int	doble_arr_len(char **str)
 	while (str[i] != NULL)
 		i++;
 	return (i);
+}
+
+int	longest_line(char **map)
+{
+	size_t	len;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(map[i]);
+	while (map[i] != NULL)
+	{
+		if (len < ft_strlen(map[i + 1]))
+		{
+			len = ft_strlen(map[i + 1]);
+			i++;
+		}
+		else
+			i++;
+	}
+	return ((int)len);
 }

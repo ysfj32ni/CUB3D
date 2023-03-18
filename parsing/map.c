@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:22:31 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/09 21:57:45 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/18 13:46:30 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_bool	check_border(t_map *map)
 
 	len = doble_arr_len(map->map);
 	if (!check_top_bottom(map->map[0]) || !check_top_bottom(map->map[len -1])
-		|| !check_border_left_right(map->map))
+		|| !check_border_left_right(map->map) || !is_map_valid(map))
 		exit_error("ERROR : unclosed map\n");
 	return (TRUE);
 }
