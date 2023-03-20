@@ -11,7 +11,14 @@
 /* ************************************************************************** */
 
 #include "cub.h"
+int	move_player(int key, void *p)
+{
+	t_map *tmp = (t_map *)p;
 
+	if (key == 53)
+		tmp->x_player += 3;		
+	return (0);
+}
 int	main(int ac, char **av)
 {
 	t_map	*map;
@@ -31,10 +38,11 @@ int	main(int ac, char **av)
 		img.mlx = mlx_init();
 		img.win = mlx_new_window(img.mlx, img.width, img.height, "Hello");
 		img.img = mlx_new_image(img.mlx, img.width, img.height);
+		img.imag = mlx_xpm_file_to_image(img.mlx, "./images/1.xpm", &img.width, &img.height);
+		img.player = mlx_xpm_file_to_image(img.mlx, "./images/player.xpm", &img.width, &img.height);
 		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 				&img.line_length, &img.endian);
-		
-		draw_map(&img , map);
+		draw_map(&img , map, len ,line);
 		mlx_loop(img.mlx);
 	}
 	else

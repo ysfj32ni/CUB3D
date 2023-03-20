@@ -7,35 +7,22 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	draw_map(t_data *img, t_map	*map)
+int	draw_map(t_data *img, t_map	*map, int row , int col)
 {
-	double	row = 0;
-	double	col = 0;
-	(void) map;
-    int		color = 0xBEBFC5;
-	
-    while (col < img->width)
+	int x = 0;
+	int y ;
+
+    while (x < row )
 	{
-		row = 0;
-		while (row < img->height)
+		y = 0;
+		while (y < col)
 		{
-			my_mlx_pixel_put(img, col, row, color);
-			row++;
+			if(map->map[x][y] == '1')
+				mlx_put_image_to_window(img->mlx, img->win, img->imag,y * 50 , x * 50 );	
+			y++;
 		}
-		col += 50;
+		x++;
 	}
-	row = 0;
-	col = 0;
-	while (row < img->height)
-	{
-		col = 0;
-		while (col < img->width)
-		{
-			my_mlx_pixel_put(img, col, row, color);
-			col++;
-		}
-		row += 50;
-	}
-	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+	mlx_put_image_to_window(img->mlx, img->win, img->player,map->y_player * 50, map->y_player * 50);
 	return (0);
 }

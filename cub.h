@@ -54,6 +54,8 @@ typedef struct s_map
 typedef struct s_data{
 	void	*mlx;
 	void	*img;
+	void	*imag;
+	void	*player;
 	void	*win;
 	char	*addr;
 	int		bits_per_pixel;
@@ -83,6 +85,6 @@ int		longest_line(char **map);
 
 // ----------> DRAWING <---------- //
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int	draw_map(t_data *img, t_map	*map);
+int	draw_map(t_data *img, t_map	*map, int row , int col);
 
 #endif
