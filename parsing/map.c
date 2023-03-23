@@ -52,7 +52,7 @@ t_bool	check_border(t_map *map)
 
 	len = doble_arr_len(map->map);
 	if (!check_top_bottom(map->map[0]) || !check_top_bottom(map->map[len -1])
-		|| !check_border_left_right(map->map) || !is_map_valid(map))
+		|| !check_border_left_right(map->map) )
 		exit_error("ERROR : unclosed map\n");
 	return (TRUE);
 }
@@ -96,10 +96,11 @@ void	player_position(t_map *map)
 		{
 			if (ft_strchr("NSEW", map->map[i][j]))
 			{
-				map->x_player = i;
-				map->y_player = j;
+				printf("i = %d j = %d\n", i, j);
+				map->x_player = j ;
+				map->y_player = i ;
 				map->start_pos = map->map[i][j];
-				map->map[i][j] = '0';
+			//	map->map[i][j] = '0';
 				return ;
 			}
 			j++;
