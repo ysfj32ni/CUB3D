@@ -100,7 +100,7 @@ void	player_position(t_map *map)
 				map->x_player = j ;
 				map->y_player = i ;
 				map->start_pos = map->map[i][j];
-			//	map->map[i][j] = '0';
+				map->map[i][j] = '0';
 				return ;
 			}
 			j++;

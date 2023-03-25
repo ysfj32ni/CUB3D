@@ -46,6 +46,8 @@ typedef struct s_map
 	char		**map;
 	int			x_player;
 	int			y_player;
+	double 		y;
+	double 		x;
 	int			long_line;
 	char		start_pos;
 	t_alloc_lst	**alloc_list;
@@ -57,6 +59,7 @@ typedef struct s_data{
 	void	*wall;
 	void	*player;
 	void 	*background;
+	void	*shadow;
 	void	*win;
 	char	*addr;
 	int		bits_per_pixel;
