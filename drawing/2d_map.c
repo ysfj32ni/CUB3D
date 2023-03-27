@@ -46,15 +46,16 @@ int	draw_map(t_data *img)
 	int col = longest_line(img->map->map);
 	int x = 0;
 	int y ;
-	 int		color = 0xccff33;
-	double i = (img->map->x)  ;
-	double j = (img->map->y)  ;
+	//  int		color = 0xccff33;
+	 double i = (img->map->x)  ;
+	 double j = (img->map->y)  ;
 
-		my_mlx_pixel_put(img, i * 50 , j * 50,color);
-		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+	//my_mlx_pixel_put(img, i * 50 , j * 50,color);
+	//	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
 		
+		mlx_put_image_to_window(img->mlx, img->win, img->player,i * 50 , j * 50 );
+		//mlx_put_image_to_window(img->mlx, img->win, img->player,(j ) * 50 , (i - 0.5 ) * 50 );
 		
-		//mlx_put_image_to_window(img->mlx, img->win, img->player,i * 50 , j * 50 );
 	while (x < row )
 	{
 		y = 0;
