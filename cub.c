@@ -18,11 +18,7 @@ int	move_player(int key, t_data *img)
 	{ 
 		if(img->map->map[(int )(img->map->y -1 )][(int)img->map->x ] != '1'  || (img->map->y - (int)img->map->y > 0.2))
 		{
-<<<<<<< HEAD
-			mlx_put_image_to_window(img->mlx, img->win, img->background,(img->map->x * 50) - 5 , (img->map->y * 50) - 5 );
-=======
 			mlx_put_image_to_window(img->mlx, img->win, img->shadow,(img->map->x * 50) - 5 , (img->map->y * 50) - 5 );
->>>>>>> 6677398a42e7b4afa98a9f1a3add9bbd7dfa16d1
 			img->map->y -= 0.1;
 			draw_map(img);
 			cast_rays(img);
@@ -32,11 +28,7 @@ int	move_player(int key, t_data *img)
 	{ 
 		if(img->map->map[(int )(img->map->y + 1 )][(int)img->map->x ] != '1' || (img->map->y - (int)img->map->y < 0.8))
 		{
-<<<<<<< HEAD
-			mlx_put_image_to_window(img->mlx, img->win, img->background,(img->map->x * 50) - 5 , (img->map->y * 50) - 5 );
-=======
 			mlx_put_image_to_window(img->mlx, img->win, img->shadow,(img->map->x * 50) - 5 , (img->map->y * 50) - 5 );
->>>>>>> 6677398a42e7b4afa98a9f1a3add9bbd7dfa16d1
 			img->map->y += 0.1;
 			draw_map(img);
 			cast_rays(img);
@@ -47,11 +39,7 @@ int	move_player(int key, t_data *img)
 
 		if(img->map->map[(int )(img->map->y )][(int)img->map->x - 1 ] != '1' ||  (img->map->x - (int)img->map->x > 0.2) )
 		{
-<<<<<<< HEAD
-			mlx_put_image_to_window(img->mlx, img->win, img->background,(img->map->x * 50) - 5 , (img->map->y * 50) - 5 );
-=======
 			mlx_put_image_to_window(img->mlx, img->win, img->shadow,(img->map->x * 50) - 5 , (img->map->y * 50) - 5 );
->>>>>>> 6677398a42e7b4afa98a9f1a3add9bbd7dfa16d1
 			img->map->x -= 0.1;
 			draw_map(img);
 			cast_rays(img);
@@ -61,11 +49,7 @@ int	move_player(int key, t_data *img)
 	{ 
 		if(img->map->map[(int )(img->map->y  )][(int)img->map->x + 1] != '1' || (img->map->x - (int)img->map->x < 0.8))
 		{
-<<<<<<< HEAD
-			mlx_put_image_to_window(img->mlx, img->win, img->background,(img->map->x * 50) - 5, (img->map->y * 50) - 5 );
-=======
 			mlx_put_image_to_window(img->mlx, img->win, img->shadow,(img->map->x * 50) - 5 , (img->map->y * 50) - 5 );
->>>>>>> 6677398a42e7b4afa98a9f1a3add9bbd7dfa16d1
 			img->map->x += 0.1;
 			draw_map(img);
 			cast_rays(img);
@@ -74,7 +58,6 @@ int	move_player(int key, t_data *img)
 	
 	return (0);
 }
-<<<<<<< HEAD
 void cast_rays(t_data *img )
 {
 	 int		color = 0xccff33;
@@ -85,23 +68,6 @@ void cast_rays(t_data *img )
 		mlx_pixel_put(img->mlx,img->win, x  , y ,color);
 		y += 1;
 	}
-=======
-void cast_rays(t_data *img)
-{
-	//int row = doble_arr_len(img->map->map);
-	int col = longest_line(img->map->map) *50;
-	  int		color = 0xccff33;
-	 int x = (img->map->x_player);
-	 int y = (img->map->y_player);
-		
-	
-		while (y < col)
-		{
-			my_mlx_pixel_put(img, x * 50, y * 50 , color);	
-			y+= 2;
-		}
-	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
->>>>>>> 6677398a42e7b4afa98a9f1a3add9bbd7dfa16d1
 }
 int	main(int ac, char **av)
 {
@@ -128,18 +94,11 @@ int	main(int ac, char **av)
 		img.mlx = mlx_init();
 		img.win = mlx_new_window(img.mlx, img.width, img.height, "Hello");
 		img.img = mlx_new_image(img.mlx, img.width, img.height);
-<<<<<<< HEAD
 		
 		img.wall = mlx_xpm_file_to_image(img.mlx, "./images/wall.xpm", &img.width, &img.height);
 		img.player = mlx_xpm_file_to_image(img.mlx, "./images/player.xpm", &img.width, &img.height);
-		img.background = mlx_xpm_file_to_image(img.mlx, "./images/background.xpm", &img.width, &img.height);
+		img.shadow = mlx_xpm_file_to_image(img.mlx, "./images/background.xpm", &img.width, &img.height);
 		
-=======
-		img.wall = mlx_xpm_file_to_image(img.mlx, "./images/wall.xpm", &img.width, &img.height);
-		img.player = mlx_xpm_file_to_image(img.mlx, "./images/player.xpm", &img.width, &img.height);
-		img.shadow = mlx_xpm_file_to_image(img.mlx, "./images/hid.xpm", &img.width, &img.height);
-		
->>>>>>> 6677398a42e7b4afa98a9f1a3add9bbd7dfa16d1
 		img.height = len * 50;
 		img.width = line * 50;
 		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
