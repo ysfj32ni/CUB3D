@@ -46,10 +46,29 @@ typedef struct s_map
 	char		**map;
 	int			x_player;
 	int			y_player;
+	double  		y;
+	double			x;
 	int			long_line;
 	char		start_pos;
 	t_alloc_lst	**alloc_list;
 }	t_map;
+
+typedef struct s_data{
+	void	*mlx;
+	void	*img;
+	void	*wall;
+	void	*player;
+	void 	*background;
+	void	*shadow;
+	void	*win;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+	t_map	*map;
+}	t_data;
 
 // ----------> PARSING <---------- //
 t_bool	check_path(char *av);
@@ -68,4 +87,11 @@ char	**get_map(char *av);
 int		skip_spaces_begin(char *str);
 int		doble_arr_len(char **str);
 int		longest_line(char **map);
+
+// ----------> DRAWING <---------- //
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int	draw_map(t_data *img);
+int draw_lines(t_data *img  );
+void cast_rays(t_data *img);
+
 #endif
