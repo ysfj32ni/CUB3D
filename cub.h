@@ -92,5 +92,9 @@ int		longest_line(char **map);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int	draw_map(t_data *img);
 int draw_lines(t_data *img  );
+<<<<<<< HEAD
+void cast_rays(t_data *img);
+=======
+>>>>>>> 6677398a42e7b4afa98a9f1a3add9bbd7dfa16d1
 
 #endif
