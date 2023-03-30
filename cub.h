@@ -91,5 +91,6 @@ int		longest_line(char **map);
 // ----------> DRAWING <---------- //
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int	draw_map(t_data *img);
+int draw_lines(t_data *img  );
 
 #endif

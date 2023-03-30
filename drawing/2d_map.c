@@ -6,56 +6,47 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
-int draw_lines(t_data *img , int row, int col)
+int draw_lines(t_data *img )
 {
-	 double		square = 50;
-	 int		color = 0xBEBFC5;
-		while (row <= img->width )
+	double x = 0 ;
+	double y = 0 ;
+	int color = 0xdee2e6;
+		
+	while(x < img->width )
+	{
+		y = 0;
+		while(y < img->height)
 		{
-			col = 0;
-			printf("col = %d\n", col);
-			printf("row %d\n", row);
-			while (col <= img->height )
-			{
-				my_mlx_pixel_put(img, col, row, color);
-				col += square;
+			my_mlx_pixel_put(img, x, y, color);	
+				y++;
 			}
-			row ++;
-	 	}
-	// row = 0;
-	// col = 0;
-	// while (row < img->height)
-	// {
-	// 	col = 0;
-	// 	while (col < img->width)
-	// 	{
-	// 		my_mlx_pixel_put(img, col, row, color);
-	// 		col+= square;
-	// 	}
-	// 	row ++;
-	// }
-
+			x += 50;
+		}
+	y = 0;
+	x = 0;
+	while(y < img->height)
+	{
+		x = 0;
+		while(x < img->width)
+		{
+			my_mlx_pixel_put(img, x   , y ,color);	
+			x++;
+		}
+		y += 50;
+	}
 	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
-	return (0);
+	return 0;
 }
 
 int	draw_map(t_data *img)
 {
 	
 	int row = doble_arr_len(img->map->map);
-	int col = longest_line(img->map->map);
+	int col = longest_line(img->map->map) - 1;
 	int x = 0;
 	int y ;
-	//  int		color = 0xccff33;
-	 double i = (img->map->x)  ;
-	 double j = (img->map->y)  ;
-
-	//my_mlx_pixel_put(img, i * 50 , j * 50,color);
-	//	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
-		
-		mlx_put_image_to_window(img->mlx, img->win, img->player,i * 50 , j * 50 );
-		//mlx_put_image_to_window(img->mlx, img->win, img->player,(j ) * 50 , (i - 0.5 ) * 50 );
-		
+	draw_lines(img );
+	mlx_put_image_to_window(img->mlx, img->win, img->player,(img->map->x * 50) - 5  , (img->map->y * 50) - 5 );
 	while (x < row )
 	{
 		y = 0;
@@ -67,6 +58,5 @@ int	draw_map(t_data *img)
 		}
 		x++;
 	}
-	//mlx_put_image_to_window(img->mlx, img->win, img->player,i * 50, j * 50);
 	return (0);
 }
