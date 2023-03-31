@@ -61,10 +61,24 @@ int	move_player(int key, t_data *img)
 void cast_rays(t_data *img )
 {	
 	int i = 41;
-	double r = 2;
-	 int		color = 0xccff33;
-	  double	x = img->map->x * 50 ;
-	  double	y = img->map->y * 50;
+	double r = 1;
+	int		color = 0x14fff7;
+	double	x ;
+	double	y ;
+	while(i > 0)
+	{
+		y = img->map->y * 50;
+		x = img->map->x * 50;
+		while(y < img->height)
+		{
+			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
+			y += 1;
+			x += r;
+		}
+		r = r -  0.025;
+		i --;
+	}
+	i = 41;
 	while(i > 0)
 	{
 		y = img->map->y * 50;
@@ -75,23 +89,38 @@ void cast_rays(t_data *img )
 			y += 1;
 			x -= r;
 		}
-		r = r -  0.05;
+		r = r + 0.025;
 		i --;
 	}
-// 	i = 25;
-// 	while(i > 0)
-// 	{
-// 		y = img->map->y * 50;
-// 		x = img->map->x * 50;
-// 		while(y < img->height)
-// 		{
-// 			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-// 			y += 1;
-// 			x -= r;
-// 		}
-// 		r = r + 0.05;
-// 		i --;
-// 	}
+	i = 41;
+	while(i > 0)
+	{
+		y = img->map->y * 50;
+		x = img->map->x * 50;
+		while(y > 0)
+		{
+			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
+			y -= 1;
+			x += r;
+		}
+		r = r - 0.025;
+		i --;
+	}
+	i = 41;
+	while(i > 0)
+	{
+		y = img->map->y * 50;
+		x = img->map->x * 50;
+		while(y > 0)
+		{
+			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
+			y -= 1;
+			x -= r;
+		}
+		r = r + 0.025;
+		i --;
+	}
+	
  }
 int	main(int ac, char **av)
 {
