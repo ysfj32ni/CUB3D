@@ -19,9 +19,9 @@ int draw_lines(t_data *img )
 		{
 			mlx_pixel_put(img->mlx, img->win, x, y, color);	
 				y++;
-			}
-			x += 50;
 		}
+		x += 50;
+	}
 	y = 0;
 	x = 0;
 	while(y < img->height)
