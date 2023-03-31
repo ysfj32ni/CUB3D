@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/yjaadoun/Desktop/CUB3D",
-      "program": "/Users/yjaadoun/Desktop/CUB3D/build/Debug/outDebug"
+      "cwd": "/Users/yjaadoun/Desktop/ysf",
+      "program": "/Users/yjaadoun/Desktop/ysf/build/Debug/outDebug"
     }
   ]
 }

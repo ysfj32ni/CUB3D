@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:22:31 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/18 13:46:30 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:35:21 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,22 @@ t_bool	check_elements(char **map)
 	return (TRUE);
 }
 
+double start_angle(char c)
+{
+	double	angle;
+
+	angle = 0.0;
+	if (c == 'S')
+		angle = S_ANGLE;
+	else if (c == 'W')
+		angle = W_ANGLE;
+	else if (c == 'N')
+		angle = N_ANGLE;
+	else if (c == 'E')
+		angle = E_ANGLE;
+	return (angle);
+}
+
 void	player_position(t_map *map)
 {
 	int	i;
@@ -99,7 +115,7 @@ void	player_position(t_map *map)
 				printf("i = %d j = %d\n", i, j);
 				map->x_player = j ;
 				map->y_player = i ;
-				map->start_pos = map->map[i][j];
+				map->start_pos = start_angle(map->map[i][j]);
 				map->map[i][j] = '0';
 				return ;
 			}

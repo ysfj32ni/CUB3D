@@ -124,7 +124,6 @@ void cast_rays(t_data *img )
  }
 int	main(int ac, char **av)
 {
-	t_map	*map;
 	t_data	img;
 	int		len;
 	int		line;
@@ -134,11 +133,12 @@ int	main(int ac, char **av)
 	{
 		if (!check_path(av[1]))
 			exit_error("ERROR : PATH must be *.cub\n");
-		map = parsing(av[1]);
-		
-		img.map = map;
-		len = doble_arr_len(map->map);
-		line = longest_line(map->map) - 1;
+		img.map = parsing(av[1]);
+		printf("start : %f\n", img.map->start_pos);
+		// raycasting(img);
+		// img.map = map;
+		len = doble_arr_len(img.map->map);
+		line = longest_line(img.map->map) - 1;
 		img.height = len * 50;
 		img.width = line * 50;
 		img.map->y = img.map->y_player;
@@ -165,3 +165,4 @@ int	main(int ac, char **av)
 	else
 		exit_error("ERROR : Enought args [./cub3D map.cub]\n");
 }
+

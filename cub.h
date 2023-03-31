@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:11:15 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/18 11:59:30 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:33:53 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 # define FALSE 0
 # define SPACE 32
 # define TAB  9
+# define RAD (M_PI / 180)
+# define S_ANGLE (3 * M_PI / 2)
+# define W_ANGLE (M_PI)
+# define N_ANGLE (M_PI / 2)
+# define E_ANGLE (2 * M_PI)
 
 typedef int	t_bool;
 
@@ -46,21 +51,21 @@ typedef struct s_map
 	char		**map;
 	int			x_player;
 	int			y_player;
-	double  		y;
-	double			x;
+	double		y;
+	double		x;
 	int			long_line;
-	char		start_pos;
+	double		start_pos;
 	t_alloc_lst	**alloc_list;
 }	t_map;
 
 typedef struct s_data{
 	void	*mlx;
+	void	*win;
 	void	*img;
 	void	*wall;
 	void	*player;
-	void 	*background;
+	void	*background;
 	void	*shadow;
-	void	*win;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -87,11 +92,10 @@ char	**get_map(char *av);
 int		skip_spaces_begin(char *str);
 int		doble_arr_len(char **str);
 int		longest_line(char **map);
-
 // ----------> DRAWING <---------- //
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int	draw_map(t_data *img);
-int draw_lines(t_data *img  );
-void cast_rays(t_data *img);
+void	cast_rays(t_data *img);
+int		draw_map(t_data *img);
+int		draw_lines(t_data *img);
 
 #endif
