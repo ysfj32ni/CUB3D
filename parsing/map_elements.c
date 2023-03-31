@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:01:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/18 13:53:08 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:56:18 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	filling_map(t_map *map)
 
 	i = 6;
 	j = 0;
-	map->map = malloc(sizeof(char *) * (doble_arr_len(map->line) - 5));
+	map->len = doble_arr_len(map->line) - 5;
+	map->map = malloc(sizeof(char *) * map->len);
 	while (map->line[i] != NULL)
 	{
 		map->map[j] = ft_strdup(map->line[i]);

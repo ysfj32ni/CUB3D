@@ -120,13 +120,45 @@ void cast_rays(t_data *img )
 		r = r + 0.025;
 		i --;
 	}
-	
  }
+
+t_data	init_func(t_data img)
+{
+	img.height = (img.map->len - 1) * 50;
+	img.width = (img.map->long_line - 1) * 50;
+	img.map->y = img.map->y_player;
+	img.map->x = img.map->x_player;
+	img.mlx = mlx_init();
+	img.win = mlx_new_window(img.mlx, img.width, img.height, "Hello");
+	img.img = mlx_new_image(img.mlx, img.width, img.height);
+	return (img);
+}
+
+void	set_images(t_data *img)
+{
+	img->wall = mlx_xpm_file_to_image(img->mlx, "./images/wall.xpm", &img->width, &img->height);
+	img->player = mlx_xpm_file_to_image(img->mlx, "./images/player.xpm", &img->width, &img->height);
+	img->shadow = mlx_xpm_file_to_image(img->mlx, "./images/background.xpm", &img->width, &img->height);
+}
+
+void raycasting(t_data img)
+{
+	img = init_func(img);
+	set_images(&img);
+	img.height = (img.map->len - 1) * 50;
+	img.width = (img.map->long_line - 1) * 50;
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
+			&img.line_length, &img.endian);
+	draw_map(&img);
+	//player moves//
+	//cast_rays(&img);
+	mlx_hook(img.win, 2, 0L, move_player, &img);
+	mlx_loop(img.mlx);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	img;
-	int		len;
-	int		line;
 
 	img.map = malloc(sizeof(t_map *));
 	if (ac > 1)
@@ -134,35 +166,8 @@ int	main(int ac, char **av)
 		if (!check_path(av[1]))
 			exit_error("ERROR : PATH must be *.cub\n");
 		img.map = parsing(av[1]);
-		printf("start : %f\n", img.map->start_pos);
-		// raycasting(img);
-		// img.map = map;
-		len = doble_arr_len(img.map->map);
-		line = longest_line(img.map->map) - 1;
-		img.height = len * 50;
-		img.width = line * 50;
-		img.map->y = img.map->y_player;
-		img.map->x = img.map->x_player;
-
-		img.mlx = mlx_init();
-		img.win = mlx_new_window(img.mlx, img.width, img.height, "Hello");
-		img.img = mlx_new_image(img.mlx, img.width, img.height);
-		
-		img.wall = mlx_xpm_file_to_image(img.mlx, "./images/wall.xpm", &img.width, &img.height);
-		img.player = mlx_xpm_file_to_image(img.mlx, "./images/player.xpm", &img.width, &img.height);
-		img.shadow = mlx_xpm_file_to_image(img.mlx, "./images/background.xpm", &img.width, &img.height);
-		
-		img.height = len * 50;
-		img.width = line * 50;
-		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-				&img.line_length, &img.endian);
-		draw_map(&img);
-		//player moves//
-		//cast_rays(&img);
-		mlx_hook(img.win, 2, 0L, move_player, &img);
-		mlx_loop(img.mlx);
+		raycasting(img);
 	}
 	else
 		exit_error("ERROR : Enought args [./cub3D map.cub]\n");
 }
-

@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 13:56:12 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/18 13:57:28 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:54:15 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	initialisation(t_map *map)
 	map->c_color = NULL;
 	map->f_color = NULL;
 	map->long_line = 0;
+	map->len = 0;
 }
 
 t_map	*parsing(char *av)

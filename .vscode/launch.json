@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/yjaadoun/Desktop/ysf",
-      "program": "/Users/yjaadoun/Desktop/ysf/build/Debug/outDebug"
+      "cwd": "/Users/yjaadoun/Desktop/cub_1.1",
+      "program": "/Users/yjaadoun/Desktop/cub_1.1/build/Debug/outDebug"
     }
   ]
 }

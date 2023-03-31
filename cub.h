@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:11:15 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/31 15:33:53 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/03/31 17:29:07 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_map
 	double		y;
 	double		x;
 	int			long_line;
+	int			len;
 	double		start_pos;
 	t_alloc_lst	**alloc_list;
 }	t_map;
@@ -97,5 +98,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	cast_rays(t_data *img);
 int		draw_map(t_data *img);
 int		draw_lines(t_data *img);
-
+void	set_images(t_data *img);
+void	raycasting(t_data img);
+t_data	init_func(t_data img);
 #endif
