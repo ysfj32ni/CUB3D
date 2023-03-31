@@ -14,7 +14,7 @@
 
 int	move_player(int key, t_data *img)
 {
-	if (key == 126)
+	if (key == 13)
 	{ 
 		if(img->map->map[(int )(img->map->y -1 )][(int)img->map->x ] != '1'  || (img->map->y - (int)img->map->y > 0.2))
 		{
@@ -24,7 +24,7 @@ int	move_player(int key, t_data *img)
 			cast_rays(img);
 		}	
 	}
-	if (key == 125)
+	if (key == 1)
 	{ 
 		if(img->map->map[(int )(img->map->y + 1 )][(int)img->map->x ] != '1' || (img->map->y - (int)img->map->y < 0.8))
 		{
@@ -34,7 +34,7 @@ int	move_player(int key, t_data *img)
 			cast_rays(img);
 		}	
 	}
-	if (key == 123)
+	if (key == 0)
 	{ 
 
 		if(img->map->map[(int )(img->map->y )][(int)img->map->x - 1 ] != '1' ||  (img->map->x - (int)img->map->x > 0.2) )
@@ -45,7 +45,7 @@ int	move_player(int key, t_data *img)
 			cast_rays(img);
 		}	
 	}
-	if (key == 124)
+	if (key == 2)
 	{ 
 		if(img->map->map[(int )(img->map->y  )][(int)img->map->x + 1] != '1' || (img->map->x - (int)img->map->x < 0.8))
 		{
@@ -59,14 +59,38 @@ int	move_player(int key, t_data *img)
 	return (0);
 }
 void cast_rays(t_data *img )
-{
+{	
+	int i = 25;
+	double r = 0.5;
 	 int		color = 0xccff33;
 	  double	x = img->map->x * 50 ;
 	  double	y = img->map->y * 50;
-	while(y < img->height)
+	while(i > 0)
 	{
-		mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-		y += 1;
+		y = img->map->y * 50;
+		x = img->map->x * 50;
+		while(y < img->height)
+		{
+			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
+			y += 1;
+			x -= r;
+		}
+		r = r - 0.05;
+		i --;
+	}
+	i = 25;
+	while(i > 0)
+	{
+		y = img->map->y * 50;
+		x = img->map->x * 50;
+		while(y < img->height)
+		{
+			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
+			y += 1;
+			x += r;
+		}
+		r = r + 0.05;
+		i --;
 	}
 }
 int	main(int ac, char **av)
