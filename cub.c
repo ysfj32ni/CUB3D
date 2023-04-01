@@ -60,66 +60,69 @@ int	move_player(int key, t_data *img)
 }
 void cast_rays(t_data *img )
 {	
-	int i = 41;
-	double r = 1;
+	//int i = 41;
+	//double r = 1;
 	int		color = 0x14fff7;
-	double	x ;
+	double	x  ;
 	double	y ;
-	while(i > 0)
-	{
-		y = img->map->y * 50;
-		x = img->map->x * 50;
-		while(y < img->height)
-		{
-			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-			y += 1;
-			x += r;
-		}
-		r = r -  0.025;
-		i --;
-	}
-	i = 41;
-	while(i > 0)
-	{
-		y = img->map->y * 50;
-		x = img->map->x * 50;
-		while(y < img->height)
-		{
-			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-			y += 1;
-			x -= r;
-		}
-		r = r + 0.025;
-		i --;
-	}
-	i = 41;
-	while(i > 0)
-	{
-		y = img->map->y * 50;
-		x = img->map->x * 50;
-		while(y > 0)
-		{
-			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-			y -= 1;
-			x += r;
-		}
-		r = r - 0.025;
-		i --;
-	}
-	i = 41;
-	while(i > 0)
-	{
-		y = img->map->y * 50;
-		x = img->map->x * 50;
-		while(y > 0)
-		{
-			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-			y -= 1;
-			x -= r;
-		}
-		r = r + 0.025;
-		i --;
-	}
+
+
+	// while(i > 0)
+	// {
+	 	y = img->map->y * 50;
+	 	x = img->map->x * 50;
+	 	while(y < img->height)
+	 	{
+	 		mlx_pixel_put(img->mlx,img->win, x * S_ANGLE   , y ,color);
+	 		y += 1;
+	// 		x += r;
+	 	}
+	// 	r = r -  0.025;
+	// 	i --;
+	// }
+	// i = 41;
+	// while(i > 0)
+	// {
+	// 	y = img->map->y * 50;
+	// 	x = img->map->x * 50;
+	// 	while(y < img->height)
+	// 	{
+	// 		mlx_pixel_put(img->mlx,img->win, x  , y ,color);
+	// 		y += 1;
+	// 		x -= r;
+	// 	}
+	// 	r = r + 0.025;
+	// 	i --;
+	// }
+	// i = 41;
+	// while(i > 0)
+	// {
+	// 	y = img->map->y * 50;
+	// 	x = img->map->x * 50;
+	// 	while(y > 0)
+	// 	{
+	// 		mlx_pixel_put(img->mlx,img->win, x  , y ,color);
+	// 		y -= 1;
+	// 		x += r;
+	// 	}
+	// 	r = r - 0.025;
+	// 	i --;
+	// }
+	// i = 41;
+	// while(i > 0)
+	// {
+	// 	y = img->map->y * 50;
+	// 	x = img->map->x * 50;
+	// 	while(y > 0)
+	// 	{
+	// 		mlx_pixel_put(img->mlx,img->win, x  , y ,color);
+	// 		y -= 1;
+	// 		x -= r;
+	// 	}
+	// 	r = r + 0.025;
+	// 	i --;
+	// }
+
  }
 
 t_data	init_func(t_data img)
