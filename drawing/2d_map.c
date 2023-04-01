@@ -1,4 +1,5 @@
 #include "../cub.h"
+
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -6,6 +7,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
+
 int draw_lines(t_data *img )
 {
 	double x = 0 ;
@@ -19,9 +21,9 @@ int draw_lines(t_data *img )
 		{
 			mlx_pixel_put(img->mlx, img->win, x, y, color);	
 				y++;
+			}
+			x += 50;
 		}
-		x += 50;
-	}
 	y = 0;
 	x = 0;
 	while(y < img->height)
@@ -39,7 +41,6 @@ int draw_lines(t_data *img )
 
 int	draw_map(t_data *img)
 {
-	
 	int row = doble_arr_len(img->map->map);
 	int col = longest_line(img->map->map);
 	int x = 0;
@@ -57,7 +58,7 @@ int	draw_map(t_data *img)
 		}
 		x++;
 	}
-	draw_lines(img );
-	mlx_put_image_to_window(img->mlx, img->win, img->player,(img->map->x * 50) - 5  , (img->map->y * 50) - 5 );
+	draw_lines(img);
+	mlx_put_image_to_window(img->mlx, img->win, img->player, (img->map->x * 50) - 5, (img->map->y * 50) - 5);
 	return (0);
 }

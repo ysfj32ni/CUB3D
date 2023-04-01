@@ -6,8 +6,13 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
+<<<<<<< HEAD
       "cwd": "/Users/yjaadoun/Desktop/new_cub",
       "program": "/Users/yjaadoun/Desktop/new_cub/build/Debug/outDebug"
+=======
+      "cwd": "/Users/yjaadoun/Desktop/cub_1.1",
+      "program": "/Users/yjaadoun/Desktop/cub_1.1/build/Debug/outDebug"
+>>>>>>> c90f1b5f825a5e81509babc76758f8f841587e95
     }
   ]
 }

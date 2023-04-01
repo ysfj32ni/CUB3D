@@ -6,7 +6,7 @@
 #    By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 12:10:58 by yjaadoun          #+#    #+#              #
-#    Updated: 2023/03/18 13:57:11 by yjaadoun         ###   ########.fr        #
+#    Updated: 2023/04/01 15:01:42 by yjaadoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,10 @@ SRC = cub.c \
 	parsing/reading_map.c \
 	parsing/errors_handler.c \
 	parsing/parisng.c \
-	drawing/2d_map.c
+	drawing/2d_map.c \
+	drawing/mlx_functions.c \
+	drawing/window.c \
+	drawing/player_movements.c \
 
 	
 NAME = cub3D

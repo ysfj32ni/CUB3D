@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:11:15 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/31 14:46:46 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:13:30 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 # define W_ANGLE (M_PI)
 # define N_ANGLE (M_PI / 2)
 # define E_ANGLE (2 * M_PI)
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
+# define ESC_KEY 53
 
 typedef int	t_bool;
 
@@ -54,6 +59,7 @@ typedef struct s_map
 	double		y;
 	double		x;
 	int			long_line;
+	int			len;
 	double		start_pos;
 	t_alloc_lst	**alloc_list;
 }	t_map;
@@ -97,5 +103,17 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	cast_rays(t_data *img);
 int		draw_map(t_data *img);
 int		draw_lines(t_data *img);
+void	ft_images(t_data *img);
+void	raycasting(t_data img);
+t_data	init_func(t_data img);
+int		move_player(int key, t_data *img);
+void	destroy_window(t_data game);
+void	close_window(t_data *game);
+int		esc_key(int key, t_data *game);
+int		cross_key(void);
+void	move_player_w(t_data *img);
+void	move_player_s(t_data *img);
+void	move_player_a(t_data *img);
+void	move_player_d(t_data *img);
 
 #endif
