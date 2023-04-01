@@ -73,8 +73,8 @@ void cast_rays(t_data *img )
 	 	x = img->map->x * 50;
 	 	while(y < img->height)
 	 	{
-	 		mlx_pixel_put(img->mlx,img->win, x * S_ANGLE   , y ,color);
-	 		y += 1;
+	 		mlx_pixel_put(img->mlx,img->win, x   , y  ,color);
+	 		y -= 1 ;
 	// 		x += r;
 	 	}
 	// 	r = r -  0.025;
