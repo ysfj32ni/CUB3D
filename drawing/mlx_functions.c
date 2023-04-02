@@ -24,71 +24,41 @@ int	move_player(int keycode, t_data *img)
 		move_player_s(img);
 	if (keycode == ESC_KEY)
 		close_window(img);
+	if (keycode == 124)
+	{ 
+		img->map->angle -= 0.1;
+		draw_map(img);
+		cast_rays(img);
+	}
+	if (keycode == 123)
+	{ 
+		img->map->angle += 0.1;
+		draw_map(img);
+		cast_rays(img);
+	}
 	return (0);
 }
 
 void cast_rays(t_data *img)
 {	
-	// int i = 41;
-	// double r = 1;
-	int		color = 0x14fff7;
-	double	x ;
+	double	x  ;
 	double	y ;
-	//  while(i > 0)
-	//  {
-		y = img->map->y * 50;
-		x = img->map->x * 50;
-		while(y < img->height)
-		{
-			mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-			y += 1;
-			// x += r;
-		}
-	 	// r = r -  0.025;
-	//  	i --;
-	//  }
-	// i = 41;
-	// while(i > 0)
-	// {
-	// 	y = img->map->y * 50;
-	// 	x = img->map->x * 50;
-	// 	while(y < img->height)
-	// 	{
-	// 		mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-	// 		y += 1;
-	// 		x -= r;
-	// 	}
-	// 	r = r + 0.025;
-	// 	i --;
-	// }
-	// i = 41;
-	// while(i > 0)
-	// {
-	// 	y = img->map->y * 50;
-	// 	x = img->map->x * 50;
-	// 	while(y > 0)
-	// 	{
-	// 		mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-	// 		y -= 1;
-	// 		x += r;
-	// 	}
-	// 	r = r - 0.025;
-	// 	i --;
-	// }
-	// i = 41;
-	// while(i > 0)
-	// {
-	// 	y = img->map->y * 50;
-	// 	x = img->map->x * 50;
-	// 	while(y > 0)
-	// 	{
-	// 		mlx_pixel_put(img->mlx,img->win, x  , y ,color);
-	// 		y -= 1;
-	// 		x -= r;
-	// 	}
-	// 	r = r + 0.025;
-	// 	i --;
-	// }
+
+	double pi = M_PI;
+	double angle = img->map->angle - (M_ / 6);
+	while(angle < img->map->angle + (pi / 6))
+	{
+	 	y = img->map->y * 50;
+	 	x = img->map->x * 50;
+		i = img->width;
+	 	while(i--)
+	 	{
+	 		mlx_pixel_put(img->mlx,img->win, x , y   , 0x14fff7);
+	 		y +=  (cos(angle )) ;
+			x += (sin(angle));
+	 	}
+		angle += 0.005;
+	}	
  }
 
 t_data	init_func(t_data img)

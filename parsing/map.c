@@ -115,7 +115,7 @@ void	player_position(t_map *map)
 				printf("i = %d j = %d\n", i, j);
 				map->x_player = j ;
 				map->y_player = i ;
-				map->start_pos = start_angle(map->map[i][j]);
+				map->angle = start_angle(map->map[i][j]);
 				map->map[i][j] = '0';
 				return ;
 			}
