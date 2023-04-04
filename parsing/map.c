@@ -83,9 +83,9 @@ t_bool	check_elements(char **map)
 	return (TRUE);
 }
 
-double start_angle(char c)
+float start_angle(char c)
 {
-	double	angle;
+	float	angle;
 
 	angle = 0.0;
 	if (c == 'S')

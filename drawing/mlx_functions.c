@@ -38,27 +38,63 @@ int	move_player(int keycode, t_data *img)
 	}
 	return (0);
 }
+int comp(float z,  float y)
+{
+	float eps = 0.000000000001;
+	return ( fabs(z - y) <= eps);
+}
 
 void cast_rays(t_data *img)
 {	
-	double	x  ;
-	double	y ;
+	float	x  ;
+	float	y ;
+	//int		i;
+	//float square  = 50;
+	float	ry = 0;
+	float 	rx = 0; ;
+	int line;
+	y = img->map->y * 50;
+	x = img->map->x * 50;
+	
 
-	double pi = M_PI;
-	double angle = img->map->angle - (M_ / 6);
-	while(angle < img->map->angle + (pi / 6))
+	// 	// horizontal
+	
+	
+	line = floor(img->map->y) ;
+	ry = img->map->y - (float)line; 
+	printf("==============================>ry = %f  y = %f line == %d  line1 = %d \n", ry ,img->map->y, line, (int)(img->map->y) );	
+	
+	//float temp = 1.0;
+	//if(ry == 0.0)
+	
+	printf("RY == %.10lf\n", ry);
+	// if (comp(ry, 0.0))
+	
+	//if(img->map->y == (float)line )
+	//	ry = 1.0 ;
+	 if (ry == 0.000000)
 	{
-	 	y = img->map->y * 50;
-	 	x = img->map->x * 50;
-		i = img->width;
+		write(1, "help\n", 5);
+		rx = 1.0 / tan(img->map->angle)  ;
+	}
+	else
+		rx = ry / tan(img->map->angle)  ;
+	//vertical
+	// line = (int)img->map->x;
+	// if((int)x == line)
+	// 	rx = (x / 50) - (line - 1);		
+	// else
+	// 	rx = (x / 50) - line ;
+	printf(" ==============================> rx == %f  \n", rx );
+	 int	i = img->width;
 	 	while(i--)
 	 	{
-	 		mlx_pixel_put(img->mlx,img->win, x , y   , 0x14fff7);
-	 		y +=  (cos(angle )) ;
-			x += (sin(angle));
+	 		mlx_pixel_put(img->mlx,img->win, x, y, 0xfee440);
+			y -= sin(img->map->angle);
+			x += cos(img->map->angle);
 	 	}
-		angle += 0.005;
-	}	
+
+
  }
 
 t_data	init_func(t_data img)
@@ -68,8 +104,8 @@ t_data	init_func(t_data img)
 	img.map->y = img.map->y_player;
 	img.map->x = img.map->x_player;
 	img.mlx = mlx_init();
-	img.win = mlx_new_window(img.mlx, img.width, img.height, "Hello");
-	img.img = mlx_new_image(img.mlx, img.width, img.height);
+	img.win = mlx_new_window(img.mlx, (int)img.width, (int)img.height, "Hello");
+	img.img = mlx_new_image(img.mlx, (int)img.width, (int)img.height);
 	return (img);
 }
 

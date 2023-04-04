@@ -56,11 +56,11 @@ typedef struct s_map
 	char		**map;
 	int			x_player;
 	int			y_player;
-	double		y;
-	double		x;
+	float		y;
+	float		x;
 	int			long_line;
 	int			len;
-	double		angle;
+	float		angle;
 	t_alloc_lst	**alloc_list;
 }	t_map;
 

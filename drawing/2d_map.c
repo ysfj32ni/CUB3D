@@ -10,8 +10,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int draw_lines(t_data *img )
 {
-	double x = 0 ;
-	double y = 0 ;
+	float x = 0 ;
+	float y = 0 ;
 	int color = 0xdee2e6;
 		
 	while(x < img->width )
