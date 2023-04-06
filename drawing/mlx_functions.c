@@ -46,56 +46,45 @@ int comp(float z,  float y)
 
 void cast_rays(t_data *img)
 {	
-	float	x  ;
-	float	y ;
-	//int		i;
-	//float square  = 50;
 	float	ry = 0;
-	float 	rx = 0; ;
+	float 	rx = 0;
 	int line;
+	double y;
+	double x;
+	double ray;
+	int i;
+	int next_x;
+	int next_y;
+
 	y = img->map->y * 50;
 	x = img->map->x * 50;
-	
 
-	// 	// horizontal
-	
-	
 	line = floor(img->map->y) ;
 	ry = img->map->y - (float)line; 
-	printf("==============================>ry = %f  y = %f line == %d  line1 = %d \n", ry ,img->map->y, line, (int)(img->map->y) );	
-	
-	//float temp = 1.0;
-	//if(ry == 0.0)
-	
-	printf("RY == %.10lf\n", ry);
-	// if (comp(ry, 0.0))
-	
-	//if(img->map->y == (float)line )
-	//	ry = 1.0 ;
-	 if (ry == 0.000000)
+	rx = (ry / tan(img->map->angle))  ;
+	ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
+	next_y = floor(img->map->y - ry );
+	next_x = floor(img->map->x + rx );
+	while(img->map->map[next_x ][next_y -1 ] != '1')
 	{
-		write(1, "help\n", 5);
-		rx = 1.0 / tan(img->map->angle)  ;
+		printf("wall[%d][%d] = %c \n",next_x, next_y ,img->map->map[next_x][next_y]);
+			ry += 1; 
+	 		rx = (ry / tan(img->map->angle))  ;
+		 	ray =  sqrt((pow(ry,2)+pow(rx,2))) ;
+		next_y = floor(img->map->y - ry );
+		next_x = floor(img->map->x + rx );
+		printf("next_x = %d && next_y = %d\n", next_x, next_y);
 	}
-	else
-		rx = ry / tan(img->map->angle)  ;
-	//vertical
-	// line = (int)img->map->x;
-	// if((int)x == line)
-	// 	rx = (x / 50) - (line - 1);		
-	// else
-	// 	rx = (x / 50) - line ;
-	printf(" ==============================> rx == %f  \n", rx );
-	 int	i = img->width;
-	 	while(i--)
-	 	{
-	 		mlx_pixel_put(img->mlx,img->win, x, y, 0xfee440);
-			y -= sin(img->map->angle);
-			x += cos(img->map->angle);
-	 	}
-
-
- }
+	i = (( ray ) * 50);
+	while(i--) 
+	{
+		mlx_pixel_put(img->mlx,img->win, x, y, 0xfee440);
+		y -= sin(img->map->angle);
+		x += cos(img->map->angle);
+ 	}
+	printf(" ==============================> after : rx == %f  && ry == %f ray = %f\n", rx * 50 , ry * 50, ray * 50 );
+	mlx_pixel_put(img->mlx,img->win, rx * 50, (img->map->y -ry) *50, 0xd90429);
+}
 
 t_data	init_func(t_data img)
 {
@@ -104,8 +93,8 @@ t_data	init_func(t_data img)
 	img.map->y = img.map->y_player;
 	img.map->x = img.map->x_player;
 	img.mlx = mlx_init();
-	img.win = mlx_new_window(img.mlx, (int)img.width, (int)img.height, "Hello");
-	img.img = mlx_new_image(img.mlx, (int)img.width, (int)img.height);
+	img.win = mlx_new_window(img.mlx, img.width, img.height, "Hello");
+	img.img = mlx_new_image(img.mlx, img.width, img.height);
 	return (img);
 }
 

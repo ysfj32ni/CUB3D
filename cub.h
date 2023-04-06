@@ -61,6 +61,8 @@ typedef struct s_map
 	int			long_line;
 	int			len;
 	float		angle;
+	float		pos_x;
+	float		pos_y;
 	t_alloc_lst	**alloc_list;
 }	t_map;
 

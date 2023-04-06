@@ -42,13 +42,13 @@ int draw_lines(t_data *img )
 int	draw_map(t_data *img)
 {
 	int row = doble_arr_len(img->map->map);
-	int col = longest_line(img->map->map);
+	int col = longest_line(img->map->map) ;
 	int x = 0;
 	int y ;
 	while (x < row )
 	{
 		y = 0;
-		while (y < col)
+		while (y < col )
 		{
 			if(img->map->map[x][y] == '1')
 				mlx_put_image_to_window(img->mlx, img->win, img->wall,y * 50 , x * 50 );	
