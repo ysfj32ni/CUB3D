@@ -6,7 +6,7 @@
 #    By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 12:10:58 by yjaadoun          #+#    #+#              #
-#    Updated: 2023/04/04 21:54:35 by wlahyani         ###   ########.fr        #
+#    Updated: 2023/04/13 15:14:45 by yjaadoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = cub.c \
 	drawing/mlx_functions.c \
 	drawing/window.c \
 	drawing/player_movements.c \
+	drawing/cast_rays.c \
 
 	
 NAME = cub3D
