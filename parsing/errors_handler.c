@@ -6,14 +6,14 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:03:32 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/18 13:51:43 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:43:56 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
 // TO DO SGFT 
-t_bool	is_map_valid(t_map *map)
+t_bool	is_map_closed(t_map *map)
 {
 	int	i;
 	int	j;

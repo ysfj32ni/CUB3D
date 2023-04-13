@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:22:31 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/31 15:35:21 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:41:34 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,12 @@ t_bool	check_elements(char **map)
 		j = 0;
 		while (map[i][j] != '\0')
 		{
+			printf("--> %c\n", map[i][j]);
 			if (!ft_strchr("01NSEW \t", map[i][j]))
+			{
+				printf("here i'm \n");
 				exit_error("ERROR : wrong element\n");
+			}
 			else if (ft_strchr("NSEW", map[i][j]))
 				count++;
 			j++;
