@@ -295,7 +295,7 @@ t_data	init_func(t_data img)
 
 void	ft_images(t_data *img)
 {
-	img->wall = mlx_xpm_file_to_image(img->mlx, "./images/wall.xpm",
+	img->wall = mlx_xpm_file_to_image(img->mlx, "./images/wa.xpm",
 		&img->width, &img->height);
 	img->player = mlx_xpm_file_to_image(img->mlx, "./images/player.xpm",
 		&img->width, &img->height);
@@ -311,7 +311,7 @@ void raycasting(t_data img)
 	img.width = (img.map->long_line - 1) * 50;
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
-	draw_map(&img);
+	//draw_map(&img);
 	//player moves//
 	//cast_rays(&img);
 	destroy_window(img);

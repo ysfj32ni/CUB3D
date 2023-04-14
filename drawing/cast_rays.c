@@ -12,7 +12,7 @@
 
 #include "../cub.h"
 
-void	up_right_rays(t_data *img)
+void	up_right_rays(t_data *img, double *x)
 {
 	double	ray1;
 	double	ray2;
@@ -20,12 +20,12 @@ void	up_right_rays(t_data *img)
 	ray1 = cast_rays1(img, img->map->view);
 	ray2 = cast_rays2(img, img->map->view);
 	if (ray2 && ray1 > ray2)
-		draw_rays(img, ray2, 0x00b4d8);
+		dala(img,ray2,x,0x9d0208);
 	else
-		draw_rays(img, ray1, 0x00b4d8);
+		dala(img,ray1,x,0x9d0208);
 }
 
-void	up_left_rays(t_data *img)
+void	up_left_rays(t_data *img, double *x)
 {
 	double	ray3;
 	double	ray4;
@@ -33,12 +33,12 @@ void	up_left_rays(t_data *img)
 	ray4 = cast_rays4(img, img->map->view);
 	ray3 = cast_rays3(img, img->map->view);
 	if (ray3 && ray4 > ray3)
-		draw_rays(img, ray3, 0xffd60a);
+		dala(img,ray3,x,0x9d0208);
 	else
-		draw_rays(img, ray4, 0xffd60a);
+		dala(img,ray4,x,0x9d0208);
 }
 
-void	down_right_rays(t_data *img)
+void	down_right_rays(t_data *img, double *x)
 {
 	double	ray2;
 	double	ray6;
@@ -46,12 +46,12 @@ void	down_right_rays(t_data *img)
 	ray6 = cast_rays6(img, img->map->view);
 	ray2 = cast_rays2(img, img->map->view);
 	if (ray2 && ray6 > ray2)
-		draw_rays(img, ray2, 0x80ed99);
+		dala(img,ray2,x,0x9d0208);
 	else
-		draw_rays(img, ray6, 0x80ed99);
+		dala(img,ray6,x,0x9d0208);
 }
 
-void	down_left_rays(t_data *img)
+void	down_left_rays(t_data *img, double *x)
 {
 	double	ray3;
 	double	ray5;
@@ -59,59 +59,61 @@ void	down_left_rays(t_data *img)
 	ray5 = cast_rays5(img, img->map->view);
 	ray3 = cast_rays3(img, img->map->view);
 	if (ray3 && ray5 > ray3)
-		draw_rays(img, ray3, 0xfb6107);
+		dala(img,ray3,x,0x9d0208);
 	else
-		draw_rays(img, ray5, 0xfb6107);
+		dala(img,ray5,x,0x9d0208);
 }
 
-void	right_side_angle(t_data *img)
+void cast_rays(t_data *img)
 {
-	double	i;
+	
+	// - (M_PI / 6);
+	//int color = 0x9d0208;
+	//double angle = 0; 
+	double x = 0;
+	mlx_clear_window(img->mlx,img->win);
+	//draw_world(img);
+	img->map->view = img->map->angle - (M_PI /6 );
+	double s = (M_PI / 3) / img->width ;
 
-	i = 0;
-	while (i <= (M_PI / 6))
+	printf ("player angle {%f}\n", s * 180/M_PI);
+
+	printf ("the start (%f)\n", img->map->view * 180/M_PI);
+	while(img->map->view <=  img->map->angle + (M_PI / 6)   )
 	{
-		img->map->view = img->map->angle + i;
-		if (img->map->view >= (2 * M_PI))
+	
+
+		//img->map->view = img->map->angle + angle;
+		if(img->map->view >= (2 * M_PI))
 			img->map->view -= (2 * M_PI);
 		if (img->map->view >= 0 && img->map->view <= (M_PI / 2))
-			up_right_rays(img);
+			up_right_rays(img, &x);
 		else if (img->map->view > (M_PI / 2) && img->map->view < M_PI)
-			up_left_rays(img);
+			up_left_rays(img, &x);
 		else if (img->map->view >= M_PI && img->map->view < ((3 * M_PI) / 2))
-			down_left_rays(img);
+			down_left_rays(img, &x);
 		else if (img->map->view >= ((3 * M_PI) / 2)
 			&& img->map->view <= M_PI * 2)
-			down_right_rays(img);
-		i += 0.005;
+			down_right_rays(img, &x);
+		  
+		img->map->view += (M_PI / 3) /( img->width+ 50 );
+		x += 1;
 	}
-}
+	printf ("the end (%f)\n", img->map->view * 180/M_PI);
+	
+	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+	//mini_map(img);
+	//my_mlx_pixel_put(img,img->map->x  , img->map->y  ,0x9381ff);
+	//mlx_pixel_put(img->mlx,img->win,img->map->x * 10, img->map->y*10,0x9381ff);
 
-void	left_side_angle(t_data *img)
-{
-	double	i;
+} 	
+// void	cast_rays(t_data *img)
+// {
+// 	double		x;
 
-	i = 0;
-	while (i <= (M_PI / 6))
-	{
-		img->map->view = img->map->angle - i;
-		if (img->map->view >= (2 * M_PI))
-			img->map->view -= (2 * M_PI);
-		if (img->map->view >= 0 && img->map->view <= (M_PI / 2))
-			up_right_rays(img);
-		else if (img->map->view > (M_PI / 2) && img->map->view < M_PI)
-			up_left_rays(img);
-		else if (img->map->view >= M_PI && img->map->view < ((3 * M_PI) / 2))
-			down_left_rays(img);
-		else if (img->map->view >= ((3 * M_PI) / 2)
-			&& img->map->view <= M_PI * 2)
-			down_right_rays(img);
-		i += 0.005;
-	}
-}
-
-void	cast_rays(t_data *img)
-{
-	left_side_angle(img);
-	right_side_angle(img);
-}
+// 	x = 0;
+// 	left_side_angle(img, &x);
+// 	right_side_angle(img, &x);
+// 	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+// 	 draw_map(img);
+// }
