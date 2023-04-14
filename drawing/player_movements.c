@@ -21,6 +21,8 @@ void	move_player_w(t_data *img)
 			(img->map->x * 50) - 5, (img->map->y * 50) - 5);
 		img->map->y -= sin(img->map->angle) / 10;
 		img->map->x += cos(img->map->angle) / 10;
+		// draw_map(img);
+		// debug(img);
 		draw_world(img);
 		cast_rays(img);
 	}
@@ -35,6 +37,8 @@ void	move_player_s(t_data *img)
 			(img->map->x * 50) - 5, (img->map->y * 50) - 5);
 		img->map->y += sin(img->map->angle) / 10;
 		img->map->x -= cos(img->map->angle) / 10;
+		// draw_map(img);
+		// debug(img);
 		draw_world(img);
 		cast_rays(img);
 	}
@@ -49,6 +53,9 @@ void	move_player_a(t_data *img)
 			(img->map->x * 50) - 5, (img->map->y * 50) - 5);
 		img->map->y += sin(img->map->angle - (M_PI / 2)) / 10;
 		img->map->x -= cos(img->map->angle - (M_PI / 2)) / 10;
+		// draw_map(img);
+		// debug(img);
+		
 		draw_world(img);
 		cast_rays(img);
 	}
@@ -63,6 +70,8 @@ void	move_player_d(t_data *img)
 			(img->map->x * 50) - 5, (img->map->y * 50) - 5);
 		img->map->y -= sin(img->map->angle - (M_PI / 2)) / 10;
 		img->map->x += cos(img->map->angle - (M_PI / 2)) / 10;
+		// draw_map(img);
+		// debug(img);
 		draw_world(img);
 		cast_rays(img);
 	}
@@ -73,6 +82,8 @@ void	turn_right(t_data *img)
 	img->map->angle -= 0.1;
 	if (img->map->angle < 0)
 		img->map->angle += (2 * M_PI);
+		// draw_map(img);
+		// debug(img);
 	draw_world(img);
 	cast_rays(img);
 }
@@ -82,6 +93,8 @@ void	turn_left(t_data *img)
 	img->map->angle += 0.1;
 	if (img->map->angle > (2 * M_PI))
 		img->map->angle -= (2 * M_PI);
+		// draw_map(img);
+		// debug(img);
 	draw_world(img);
 	cast_rays(img);
 }

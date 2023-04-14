@@ -46,7 +46,7 @@ int	draw_lines(t_data *img)
 
 int	draw_map(t_data *img)
 {
-	int	x;
+		int	x;
 	int	y;
 
 	x = 0;
@@ -57,14 +57,36 @@ int	draw_map(t_data *img)
 		{
 			if (img->map->map[x][y] == '1')
 				mlx_put_image_to_window(img->mlx, img->win, img->wall,
-					y * 10, x * 10);
+					y * 50, x * 50);
 			else
 				mlx_put_image_to_window(img->mlx, img->win, img->shadow,
-					y * 10, x * 10);
+					y * 50, x * 50);
 			y++;
 		}
 		x++;
 	}
+	draw_lines(img);
+	mlx_put_image_to_window(img->mlx, img->win, img->player,
+		(img->map->x * 50 - 5), (img->map->y * 50) - 5);
+	// int	x;
+	// int	y;
+
+	// x = 0;
+	// while (x < img->map->len - 1)
+	// {
+	// 	y = 0;
+	// 	while (y < img->map->long_line)
+	// 	{
+	// 		if (img->map->map[x][y] == '1')
+	// 			mlx_put_image_to_window(img->mlx, img->win, img->wall,
+	// 				y * 10, x * 10);
+	// 		else
+	// 			mlx_put_image_to_window(img->mlx, img->win, img->shadow,
+	// 				y * 10, x * 10);
+	// 		y++;
+	// 	}
+	// 	x++;
+	// }
 	// my_mlx_pixel_put(img,img->map->x * 50 , img->map->y * 50  ,0xc1121f);
 	// mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0); 
 	// //		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);	img->map->y, img->map->x);
@@ -91,6 +113,35 @@ void dala(t_data *img , double ray, double *x, int color)
  			}
 	//mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
 }
+// void dala(t_data *img , double ray, double *s, int color)
+// {
+// 	(void)s;
+// 	(void)color;
+// 	(void)ray;
+// 	int	x;
+// 	int	y;
+
+// 	x = 0;
+// 	while (x < img->map->len - 1)
+// 	{
+// 		y = 0;
+// 		while (y < img->map->long_line)
+// 		{
+// 			if (img->map->map[x][y] == '1')
+// 				mlx_put_image_to_window(img->mlx, img->win, img->wall,
+// 					y * 50, x * 50);
+// 			else
+// 				mlx_put_image_to_window(img->mlx, img->win, img->shadow,
+// 					y * 50, x * 50);
+// 			y++;
+// 		}
+// 		x++;
+// 	}
+// 	draw_lines(img);
+// 	mlx_put_image_to_window(img->mlx, img->win, img->player,
+// 		(img->map->x * 50 - 5), (img->map->y * 50) - 5);
+
+// }
 void draw_world(t_data *img)
 {
 	int i = 0;

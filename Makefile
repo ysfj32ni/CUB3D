@@ -22,6 +22,7 @@ SRC = cub.c \
 	drawing/window.c \
 	drawing/player_movements.c \
 	drawing/cast_rays.c \
+	drawing/debug_ray.c \
 
 	
 NAME = cub3D

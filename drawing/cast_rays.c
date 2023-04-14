@@ -73,19 +73,16 @@ void cast_rays(t_data *img)
 	double x = 0;
 	mlx_clear_window(img->mlx,img->win);
 	//draw_world(img);
-	img->map->view = img->map->angle - (M_PI /6 );
-	double s = (M_PI / 3) / img->width ;
+	 img->map->view = fabs(img->map->angle - (M_PI /6 ));
+	// double s = (M_PI / 3) / img->width ;
 
-	printf ("player angle {%f}\n", s * 180/M_PI);
-
-	printf ("the start (%f)\n", img->map->view * 180/M_PI);
-	while(img->map->view <=  img->map->angle + (M_PI / 6)   )
+	while(img->map->view <  (M_PI / 3)   )
 	{
-	
-
 		//img->map->view = img->map->angle + angle;
-		if(img->map->view >= (2 * M_PI))
+		if(img->map->view >= (2 * M_PI) )
 			img->map->view -= (2 * M_PI);
+		if(img->map->view < 0 )
+			img->map->view = (2 * M_PI) - fabs(img->map->angle - (M_PI /6 )) ;
 		if (img->map->view >= 0 && img->map->view <= (M_PI / 2))
 			up_right_rays(img, &x);
 		else if (img->map->view > (M_PI / 2) && img->map->view < M_PI)
@@ -96,11 +93,9 @@ void cast_rays(t_data *img)
 			&& img->map->view <= M_PI * 2)
 			down_right_rays(img, &x);
 		  
-		img->map->view += (M_PI / 3) /( img->width+ 50 );
+		img->map->view += (M_PI / 3) /( img->width + 50 );
 		x += 1;
 	}
-	printf ("the end (%f)\n", img->map->view * 180/M_PI);
-	
 	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
 	//mini_map(img);
 	//my_mlx_pixel_put(img,img->map->x  , img->map->y  ,0x9381ff);

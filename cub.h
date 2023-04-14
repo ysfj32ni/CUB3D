@@ -138,6 +138,7 @@ void	ft_images(t_data *img);
 void	raycasting(t_data img);
 void dala(t_data *img , double ray, double *x, int color);
 void draw_world(t_data *img);
+void debug(t_data *img);
 
 
 
