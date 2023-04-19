@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:11:15 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/13 15:17:19 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:59:57 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	draw_rays(t_data *img , float ray ,int color );
 
 void	ft_images(t_data *img);
 void raycasting(t_data *img);
-void dala(t_data *img , double ray, double *x, int color , double r);
+void dala(t_data *img , double ray, double *x, int side , double r);
 void draw_world(t_data *img);
 void debug(t_data *img);
 

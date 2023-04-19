@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2d_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:10:10 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/19 03:11:39 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/19 21:47:49 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,21 @@ int	draw_map(t_data *img)
 	return (0);
 }
 
-void dala(t_data *img , double ray, double *x, int color, double r)
+void dala(t_data *img , double ray, double *x, int side, double r)
 {
 	double distance = (1050 / 2 ) * tan(M_PI / 6);
 	double wall = distance / ((ray ) ) ;
 		wall *= 2;
-
+	int color = 0xFFFFFF;
 	// if (wall >= 1050)
 	// 	wall = 1050 * 2;
 
 	double y = (1050  / 2 ) - (wall / 2) ;
 	(void)r;
-	double i = (r) * (img->ea.w);
+	//double i = (r) * (img->ea.w);
+	(void)side;
 	
-	
+	//	printf("%d\n", color);
 	while(y < (1050 / 2) + (wall / 2 )  )
 	{
 		double j = (y - (1050  / 2 ) + (wall / 2)) * (img->ea.h / wall);
@@ -95,11 +96,25 @@ void dala(t_data *img , double ray, double *x, int color, double r)
 		// char *dst = img->t.addr + (int)j * img->t.line_length + (int)(i ) * (img->t.bits_per_pixel / 8)  ;
 		if(!img->ea.w)
 			exit_error("ERROR : MLX");
+		
+			// img->we.addr = mlx_get_data_addr(img->we.img, &img->we.bits_per_pixel, &img->we.line_length, &img->we.endian);
+			// char *dst = img->we.addr + (int)j * img->we.line_length + (int)(i ) * (img->we.bits_per_pixel / 8)  ;
+			// color = *(unsigned int*)dst;
+		
+		if(side == 2  )
 		{
 			img->ea.addr = mlx_get_data_addr(img->ea.img, &img->ea.bits_per_pixel, &img->ea.line_length, &img->ea.endian);
-			char *dst = img->ea.addr + (int)j * img->ea.line_length + (int)(i ) * (img->ea.bits_per_pixel / 8)  ;
+			char *dst = img->ea.addr + (int)j * img->ea.line_length + (int)(r ) * (img->ea.bits_per_pixel / 8)  ;
 			color = *(unsigned int*)dst;
 		}
+		
+		if(side == 1)
+		{
+			img->no.addr = mlx_get_data_addr(img->no.img, &img->no.bits_per_pixel, &img->no.line_length, &img->no.endian);
+			char *dst = img->no.addr + (int)j * img->no.line_length + (int)(r ) * (img->no.bits_per_pixel / 8)  ;
+			color = *(unsigned int*)dst;
+		}	
+				
 		my_mlx_pixel_put(img,*x,y, color);
 		y += 1;
 		j++;

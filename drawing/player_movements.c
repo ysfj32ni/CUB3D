@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:54:41 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/13 15:31:13 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:56:03 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	move_player_w(t_data *img)
 			img->map->y -= sin((img->map->angle - (M_PI / 6) )  ) / 5  ;
 			img->map->x += cos((img->map->angle - (M_PI / 6) ) ) / 5 ;
 		
-	printf("y = %f \n" , img->map->y);
 	if (img->map->map[(int)img->map->y][(int)img->map->x ] == '1' )
 	{
 		img->map->y = y ;
