@@ -62,11 +62,5 @@ int	longest_line(char **map)
 
 int	encode_rgb(int red, int green, int blue)
 {
-	int hex;
-
-	hex = 0;
-	hex |= ((red / 16) << 28) | ((red % 16) << 24);
-	hex |= ((green / 16) << 20) | ((green % 16) << 16);
-	hex |= ((blue / 16) << 12) | ((blue% 16) << 8);
-	return (hex);
+	return ((red << 16) + (green << 8) + (blue));
 }

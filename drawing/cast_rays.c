@@ -22,9 +22,9 @@ void	up_right_rays(t_data *img, double *x)
 	ray1 = cast_rays1(img, img->map->view, &rx);
 	ray2 = cast_rays2(img, img->map->view, &ry);
 	if (ray2 && ray1 > ray2)
-		dala(img, ray2, x, 0xFF6000, ry);
+		dala(img, ray2, x, 1, ry);
 	else
-		dala(img, ray1, x, 0xFFA559, rx);
+		dala(img, ray1, x, 2, rx);
 }
 
 void	up_left_rays(t_data *img, double *x)

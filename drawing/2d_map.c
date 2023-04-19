@@ -80,45 +80,50 @@ void dala(t_data *img , double ray, double *x, int color, double r)
 	double wall = distance / ((ray ) ) ;
 		wall *= 2;
 
-	if (wall >= 1050)
-		wall = 1050 * 2;
+	// if (wall >= 1050)
+	// 	wall = 1050 * 2;
 
 	double y = (1050  / 2 ) - (wall / 2) ;
 	(void)r;
-	double i = (r) * (img->t.w);
+	double i = (r) * (img->ea.w);
 	
 	
 	while(y < (1050 / 2) + (wall / 2 )  )
 	{
-		double j = (y - (1050  / 2 ) + (wall / 2)) * (img->t.h / wall);
-		img->t.addr = mlx_get_data_addr(img->t.img, &img->t.bits_per_pixel, &img->t.line_length, &img->t.endian);
-		char *dst = img->t.addr + (int)j * img->t.line_length + (int)(i ) * (img->t.bits_per_pixel / 8)  ;
-		color = *(unsigned int*)dst;
+		double j = (y - (1050  / 2 ) + (wall / 2)) * (img->ea.h / wall);
+		// img->t.addr = mlx_get_data_addr(img->t.img, &img->t.bits_per_pixel, &img->t.line_length, &img->t.endian);
+		// char *dst = img->t.addr + (int)j * img->t.line_length + (int)(i ) * (img->t.bits_per_pixel / 8)  ;
+		if(!img->ea.w)
+			exit_error("ERROR : MLX");
+		{
+			img->ea.addr = mlx_get_data_addr(img->ea.img, &img->ea.bits_per_pixel, &img->ea.line_length, &img->ea.endian);
+			char *dst = img->ea.addr + (int)j * img->ea.line_length + (int)(i ) * (img->ea.bits_per_pixel / 8)  ;
+			color = *(unsigned int*)dst;
+		}
 		my_mlx_pixel_put(img,*x,y, color);
 		y += 1;
 		j++;
 	}
 }
 
-void draw_world(t_data *img)
+void	draw_world(t_data *img)
 {
-	int i = 0;
-	int j;
-	int color = 0xade8f4;
+	int	i;
+	int	j;
+	int	color;
 
-
-		while(i < 1050 )
-		{	
-			if(i > 1050 / 2)
-				color = 0x454545;
-
-			j = 0;
-			while(j < (1050 ) )
-			{
-				my_mlx_pixel_put(img,j, i, color);
-				j++;
-			}	
-			i++;
+	i = 0;
+	color = img->map->c_color;
+	while (i < 1050 )
+	{
+		if (i > 1050 / 2)
+			color = img->map->f_color;
+		j = 0;
+		while (j < 1050)
+		{
+			my_mlx_pixel_put(img, j, i, color);
+			j++;
 		}
-
+		i++;
+	}
 }

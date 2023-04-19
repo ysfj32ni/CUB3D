@@ -38,7 +38,7 @@
 typedef int	t_bool;
 
 
-typedef struct s_tex1
+typedef struct s_tex
 {
 	void	*img;
 	char	*addr;
@@ -95,7 +95,10 @@ typedef struct s_data{
 	int		width;
 	int		height;
 	t_map	*map;
-	t_ex	t;
+	t_ex	we;
+	t_ex	ea;
+	t_ex	so;
+	t_ex	no;
 }	t_data;
 
 // ----------> PARSING <---------- //

@@ -68,6 +68,6 @@ t_map	*parsing(char *av)
 	map->line = get_map(av);
 	map_elements(map);
 	replace_space(map->map, map->long_line);
-	print_2d(map->map);
+	// print_2d(map->map);
 	return (map);
 }
