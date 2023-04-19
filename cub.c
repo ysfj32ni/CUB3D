@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 
 	img.map = malloc(sizeof(t_map *));
-	if (ac > 1)
+	if (ac == 2)
 	{
 		if (!check_path(av[1], TRUE))
 			exit_error("ERROR : PATH must be *.cub\n");

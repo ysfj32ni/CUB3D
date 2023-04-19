@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:10:10 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/19 21:47:49 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/19 22:45:26 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void dala(t_data *img , double ray, double *x, int side, double r)
 {
 	double distance = (1050 / 2 ) * tan(M_PI / 6);
 	double wall = distance / ((ray ) ) ;
-		wall *= 2;
+	wall *= 2;
 	int color = 0xFFFFFF;
 	// if (wall >= 1050)
 	// 	wall = 1050 * 2;
@@ -113,7 +113,19 @@ void dala(t_data *img , double ray, double *x, int side, double r)
 			img->no.addr = mlx_get_data_addr(img->no.img, &img->no.bits_per_pixel, &img->no.line_length, &img->no.endian);
 			char *dst = img->no.addr + (int)j * img->no.line_length + (int)(r ) * (img->no.bits_per_pixel / 8)  ;
 			color = *(unsigned int*)dst;
+		}
+		if(side == 3)
+		{
+			img->we.addr = mlx_get_data_addr(img->we.img, &img->we.bits_per_pixel, &img->we.line_length, &img->we.endian);
+			char *dst = img->we.addr + (int)j * img->we.line_length + (int)(r ) * (img->we.bits_per_pixel / 8)  ;
+			color = *(unsigned int*)dst;
 		}	
+		if(side == 4)
+		{
+			img->so.addr = mlx_get_data_addr(img->so.img, &img->so.bits_per_pixel, &img->so.line_length, &img->so.endian);
+			char *dst = img->so.addr + (int)j * img->so.line_length + (int)(r ) * (img->so.bits_per_pixel / 8)  ;
+			color = *(unsigned int*)dst;
+		}
 				
 		my_mlx_pixel_put(img,*x,y, color);
 		y += 1;

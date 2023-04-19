@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:13:40 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/19 21:49:29 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/19 22:08:52 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	up_left_rays(t_data *img, double *x)
 	ray4 = cast_rays4(img, img->map->view, &ry);
 	ray3 = cast_rays3(img, img->map->view, &rx);
 	if (ray3 && ray4 > ray3)
-		dala(img, ray3, x, 4, rx);
+		dala(img, ray3, x, 3, rx * img->we.w);
 	else
 		dala(img, ray4, x, 1, ry * img->no.w);
 }
@@ -52,9 +52,9 @@ void	down_right_rays(t_data *img, double *x)
 	ray6 = cast_rays6(img, img->map->view, &ry);
 	ray2 = cast_rays2(img, img->map->view, &rx);
 	if (ray2 && ray6 > ray2)
-		dala(img, ray2, x, 5, rx);
+		dala(img, ray2, x, 3, rx * img->we.w);
 	else
-		dala(img, ray6, x, 6, ry);
+		dala(img, ray6, x, 4, ry * img->so.w);
 }
 
 void	down_left_rays(t_data *img, double *x)
@@ -67,9 +67,9 @@ void	down_left_rays(t_data *img, double *x)
 	ray5 = cast_rays5(img, img->map->view, &ry);
 	ray3 = cast_rays3(img, img->map->view, &rx);
 	if (ray3 && ray5 > ray3)
-		dala(img, ray3, x, 7, rx);
+		dala(img, ray3, x, 3, rx * img->we.w);
 	else
-		dala(img, ray5, x, 8, ry);
+		dala(img, ray5, x, 4, ry * img->so.w);
 }
 
 void	cast_rays(t_data *img)
