@@ -22,7 +22,7 @@ double c1(t_data *img)
 	
 	line = floor(img->map->y) ;
 	ry = img->map->y - (float)line; 
-	rx = (ry / tan(img->map->angle))  ;
+	rx = (ry / tan(img->map->view))  ;
 	ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 	next_y = floor(img->map->y - ry );
 	next_x = floor(img->map->x + rx );
@@ -34,15 +34,19 @@ if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 
 			while (TRUE)
 			 {	
 					ry += 1; 
-					rx = fabs((fabs(ry) / tan(img->map->angle)));
+					rx = fabs((fabs(ry) / tan(img->map->view)));
 					next_x = floor(img->map->x + rx );
 					next_y = floor(img->map->y - ry);
 					ray =  sqrt((pow(ry,2) + pow(rx,2)));
 
 					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
 					{
+
 						if(img->map->map[next_y - 1  ][next_x ] == '1')
-							break;		
+						{
+							//printf("  x = %d \n", next_x);
+							break;
+						}
 					}
 					else
 						break;
@@ -58,7 +62,7 @@ double c2(t_data *img)
 	int next_y = 0;	
 	
 	rx =   ceil(img->map->x) - img->map->x  ;
-	ry = rx * tan( img->map->angle); 
+	ry = rx * tan( img->map->view); 
 	ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 	next_y = floor(img->map->y - ry );
 	next_x = floor(img->map->x + rx ) ;
@@ -70,7 +74,7 @@ if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 
 	 	while(TRUE)
 		{	
 	 			rx +=  1;
-				ry = rx * tan( img->map->angle); 
+				ry = rx * tan( img->map->view); 
 				if(ry > img->map->y)
 					ry = img->map->y;
 				ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
@@ -96,7 +100,7 @@ double c3(t_data *img)
 	int next_y = 0;	
 	
 	rx =  img->map->x - floor(img->map->x);
-	ry = rx * tan(M_PI -  img->map->angle);
+	ry = rx * tan(M_PI -  img->map->view);
 	ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 	next_y = floor(img->map->y - ry );
 	next_x = floor(img->map->x - rx ) ;
@@ -108,7 +112,7 @@ double c3(t_data *img)
 	 	while(TRUE)
 		{	
 	 			rx +=  1;
-				ry = rx * tan( M_PI  - img->map->angle); 
+				ry = rx * tan( M_PI  - img->map->view); 
 				ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 				next_y = floor(img->map->y - ry );
 				next_x = floor(img->map->x - rx ) ;
@@ -135,7 +139,7 @@ double c4(t_data *img)
 	
 	line = floor(img->map->y) ;
 	ry = img->map->y - (float)line; 
-	rx = (ry / tan(M_PI - img->map->angle))  ;
+	rx = (ry / tan(M_PI - img->map->view))  ;
 	ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 	next_y = floor(img->map->y - ry );
 	next_x = floor(img->map->x - rx );
@@ -147,7 +151,7 @@ double c4(t_data *img)
 			while (TRUE)
 			 {	
 					ry += 1; 
-					rx = fabs((fabs(ry) / tan(M_PI - img->map->angle)));
+					rx = fabs((fabs(ry) / tan(M_PI - img->map->view)));
 					next_x = floor(img->map->x - rx );
 					next_y = floor(img->map->y - ry);
 					ray =  sqrt((pow(ry,2) + pow(rx,2)));
@@ -174,7 +178,7 @@ double c5(t_data *img)
 	
 	line = ceil(img->map->y) ;
 	ry = (float)line -  img->map->y  ; 
-	rx = (ry / tan(img->map->angle - M_PI))  ;
+	rx = (ry / tan(img->map->view - M_PI))  ;
 	ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 	next_y = floor(img->map->y + ry );
 	next_x = floor(img->map->x - rx );
@@ -186,7 +190,7 @@ double c5(t_data *img)
 			while (TRUE)
 			 {				
 					ry += 1; 
-					rx = fabs((fabs(ry) / tan(M_PI - img->map->angle)));
+					rx = fabs((fabs(ry) / tan(M_PI - img->map->view)));
 					next_x = floor(img->map->x - rx );
 					next_y = floor(img->map->y + ry);
 					ray =  sqrt((pow(ry,2) + pow(rx,2)));
@@ -214,7 +218,7 @@ double c6(t_data *img)
 	
 	line = ceil(img->map->y) ;
 	ry = (float)line -  img->map->y  ; 
-	rx = ry * tan( ((3 * M_PI) / 2) - img->map->angle )  ;
+	rx = ry * tan( ((3 * M_PI) / 2) - img->map->view )  ;
 	ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 	next_y = floor(img->map->y + ry );
 	next_x = floor(img->map->x - rx );
@@ -226,7 +230,7 @@ double c6(t_data *img)
 			while (TRUE)
 			 {	
 					ry += 1; 
-					rx = (ry * tan( ((3 * M_PI) / 2) - img->map->angle )) ;
+					rx = (ry * tan( ((3 * M_PI) / 2) - img->map->view )) ;
 					next_x = floor(img->map->x - rx );
 					next_y = floor(img->map->y + ry);
 					ray =  sqrt((pow(ry,2) + pow(rx,2)));
@@ -249,7 +253,9 @@ void debug(t_data *img)
 	double ray4 = 0;
 	double ray5 = 0;
 	double ray6 = 0;
-
+img->map->view = img->map->angle;
+while(img->map->view <=  img->map->angle + (M_PI / 3)   )
+{
 	 if(img->map->angle >= 0 && img->map->angle <= (M_PI * 2))
 	 { 	
 		if(img->map->angle <= (M_PI / 2)+ 0.1)	
@@ -292,4 +298,6 @@ void debug(t_data *img)
 	 			draw(img, ray6);	
 		 }
 	 }
+	 img->map->view += ((M_PI / 3) /( img->width + 50 ));
+	}
 } 

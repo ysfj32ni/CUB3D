@@ -25,11 +25,10 @@
 # define FALSE 0
 # define SPACE 32
 # define TAB  9
-# define RAD (M_PI / 180)
-# define S_ANGLE (3 * M_PI / 2)
-# define W_ANGLE (M_PI)
-# define N_ANGLE (M_PI / 2)
-# define E_ANGLE (2 * M_PI)
+# define TRUE 1
+# define FALSE 0
+# define SPACE 32
+# define TAB  9
 # define W_KEY 13
 # define A_KEY 0
 # define S_KEY 1
@@ -37,6 +36,18 @@
 # define ESC_KEY 53
 
 typedef int	t_bool;
+
+
+typedef struct s_tex1
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		w;
+	int		h;
+}				t_ex;
 
 typedef struct s_alloc_lst
 {
@@ -51,8 +62,8 @@ typedef struct s_map
 	char		*so_path;
 	char		*we_path;
 	char		*ea_path;
-	char		*f_color;
-	char		*c_color;
+	int			f_color;
+	int			c_color;
 	char		**map;
 	int			x_player;
 	int			y_player;
@@ -61,7 +72,11 @@ typedef struct s_map
 	int			long_line;
 	int			len;
 	float		angle;
-	float		view;		
+	double		rx;
+	double		ry;
+	//flaot      zawya;
+	float		view;	
+	double			i;
 	t_alloc_lst	**alloc_list;
 }	t_map;
 
@@ -80,25 +95,30 @@ typedef struct s_data{
 	int		width;
 	int		height;
 	t_map	*map;
+	t_ex	t;
 }	t_data;
 
 // ----------> PARSING <---------- //
-t_bool	check_path(char *av);
-t_bool	check_border(t_map *map);
-t_bool	check_elements(char **map);
-// t_bool	check_errors(t_map *map);
-t_bool	is_map_valid(t_map *map);
-t_map	*parsing(char *av);
-void	map_elements(t_map *map);
-void	print_2d(char **str);
-void	exit_error(char	*str);
-void	check_colors(char *str);
-void	initialisation(t_map *map);
-void	player_position(t_map *map);
-char	**get_map(char *av);
-int		skip_spaces_begin(char *str);
-int		doble_arr_len(char **str);
-int		longest_line(char **map);
+t_bool    check_path(char *av, t_bool a);
+t_bool    check_border(t_map *map);
+t_bool    check_elements(char **map);
+// t_bool    check_errors(t_map *map);
+t_bool    is_map_valid(t_map *map);
+t_map    *parsing(char *av);
+void    map_elements(t_map *map);
+void    print_2d(char **str);
+void    exit_error(char    *str);
+int        check_co(char *str);
+void    check_colors(char *str);
+void    initialisation(t_map *map);
+void    player_position(t_map *map);
+char    **get_map(char *av);
+int        skip_spaces_begin(char *str);
+int        doble_arr_len(char **str);
+int        longest_line(char **map);
+void    check_empty_line(char *map);
+int        encode_rgb(int red, int green, int blue);
+char    *check_textures(char *path);
 // ----------> DRAWING <---------- //
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	cast_rays(t_data *img);
@@ -106,10 +126,10 @@ int		draw_map(t_data *img);
 int		draw_lines(t_data *img);
 void draw_rays(t_data *img , float ray ,int color );
 void	ft_images(t_data *img);
-void	raycasting(t_data img);
-t_data	init_func(t_data img);
+
+t_data	*init_func(t_data *img);
 int		move_player(int key, t_data *img);
-void	destroy_window(t_data game);
+void	destroy_window(t_data *game);
 void	close_window(t_data *game);
 int		esc_key(int key, t_data *game);
 int		cross_key(void);
@@ -126,20 +146,21 @@ void	down_right_rays(t_data *img, double *x);
 void	down_left_rays(t_data *img, double *x);
 void	right_side_angle(t_data *img, double *x);
 void	left_side_angle(t_data *img, double *x);
-double	cast_rays1(t_data *img , float view);
-double	cast_rays2(t_data *img , float view);
-double	cast_rays3(t_data *img, float view);
-double	cast_rays4(t_data *img, float view);
-double	cast_rays5(t_data *img, float view);
-double	cast_rays6(t_data *img, float view);
+double	cast_rays1(t_data *img , float view , double *rx);
+double	cast_rays2(t_data *img , float view , double *rx);
+double	cast_rays3(t_data *img, float view , double *rx);
+double	cast_rays4(t_data *img, float view, double *rx);
+double	cast_rays5(t_data *img, float view, double *rx);
+double	cast_rays6(t_data *img, float view, double *rx);
 void	draw_rays(t_data *img , float ray ,int color );
-t_data	init_func(t_data img);
+
 void	ft_images(t_data *img);
-void	raycasting(t_data img);
-void dala(t_data *img , double ray, double *x, int color);
+void raycasting(t_data *img);
+void dala(t_data *img , double ray, double *x, int color , double r);
 void draw_world(t_data *img);
 void debug(t_data *img);
 
 
 
 #endif
+

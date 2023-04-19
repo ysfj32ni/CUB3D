@@ -6,7 +6,7 @@
 #    By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 22:12:27 by yjaadoun          #+#    #+#              #
-#    Updated: 2023/03/03 19:05:11 by yjaadoun         ###   ########.fr        #
+#    Updated: 2023/04/16 17:31:38 by yjaadoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,11 +45,12 @@ SRC = ft_atoi.c			\
 		ft_putendl_fd.c	\
 		ft_putnbr_fd.c	\
 		ft_split.c		\
+		ft_split1.c		\
 		get_next_line.c \
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 
 NAME = libft.a
 

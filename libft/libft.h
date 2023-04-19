@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 13:36:44 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/07 19:31:00 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/15 02:43:13 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ char	*get_next_line(int fd);
 char	*ft_get_line(char *save, int i);
 char	*read_and_save(int fd, char *save);
 char	*ft_saving(char *save);
+char	**ft_split1(char const *s, char c);
 
 #endif

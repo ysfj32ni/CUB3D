@@ -6,11 +6,25 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:22:31 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/12 13:41:34 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/17 02:44:46 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
+
+void	check_empty_line(char *map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (map[0] == '\n' || (map[i] == '\n' && map[i + 1] == '\n')
+			|| (map[i] == '\n' && map[i + 1] == '\0'))
+			exit_error("empty line in the map\n");
+		i++;
+	}
+}
 
 t_bool	check_top_bottom(char *line)
 {
@@ -26,7 +40,7 @@ t_bool	check_top_bottom(char *line)
 	return (TRUE);
 }
 
-t_bool	check_border_left_right(char **map)
+t_bool	check_border_left_and_right(char **map)
 {
 	int	i;
 	int	j;
@@ -51,8 +65,10 @@ t_bool	check_border(t_map *map)
 	int	len;
 
 	len = doble_arr_len(map->map);
-	if (!check_top_bottom(map->map[0]) || !check_top_bottom(map->map[len -1])
-		|| !check_border_left_right(map->map) )
+	if (!check_top_bottom(map->map[0])
+		|| !check_top_bottom(map->map[len -1])
+		|| !check_border_left_and_right(map->map)
+		|| !is_map_valid(map))
 		exit_error("ERROR : unclosed map\n");
 	return (TRUE);
 }
@@ -70,12 +86,8 @@ t_bool	check_elements(char **map)
 		j = 0;
 		while (map[i][j] != '\0')
 		{
-			printf("--> %c\n", map[i][j]);
 			if (!ft_strchr("01NSEW \t", map[i][j]))
-			{
-				printf("here i'm \n");
 				exit_error("ERROR : wrong element\n");
-			}
 			else if (ft_strchr("NSEW", map[i][j]))
 				count++;
 			j++;
@@ -93,13 +105,13 @@ float start_angle(char c)
 
 	angle = 0.0;
 	if (c == 'S')
-		angle = S_ANGLE;
+		angle = (3 * M_PI) / 2;
 	else if (c == 'W')
-		angle = W_ANGLE;
+		angle = M_PI;
 	else if (c == 'N')
-		angle = N_ANGLE;
+		angle = M_PI / 2;
 	else if (c == 'E')
-		angle = E_ANGLE;
+		angle = 2 * M_PI;
 	return (angle);
 }
 
@@ -116,7 +128,6 @@ void	player_position(t_map *map)
 		{
 			if (ft_strchr("NSEW", map->map[i][j]))
 			{
-				printf("i = %d j = %d\n", i, j);
 				map->x_player = j ;
 				map->y_player = i ;
 				map->angle = start_angle(map->map[i][j]);
@@ -127,22 +138,4 @@ void	player_position(t_map *map)
 		}
 		i++;
 	}
-}
-
-// TO DO : space between | is_alpha | 
-void	check_colors(char *str)
-{
-	char	**div;
-	int		i;
-
-	i = 0;
-	div = ft_split(str + 1, ',');
-	while (div[i] != NULL)
-	{	
-		if (ft_atoi(div[i]) < 0 || ft_atoi(div[i]) > 255)
-			exit_error("ERROR : invalid color code\n");
-		i++;
-	}
-	if (i != 3)
-		exit_error("ERROR : invalid color code N˚\n");
 }

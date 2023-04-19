@@ -6,11 +6,12 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 11:51:43 by yjaadoun          #+#    #+#             */
-/*   Updated: 2021/11/29 13:33:49 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/15 03:18:05 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../cub.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -21,6 +22,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	l = ft_strlen(s);
+	if (len == 0)
+		exit_error("ERROR : code color");
 	if (start >= l)
 		return (ft_strdup(""));
 	if ((l - start) < len)

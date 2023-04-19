@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:59:08 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/18 13:58:21 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/17 02:45:43 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_2d(char **str)
 	i = 0;
 	while (str[i] != NULL)
 	{
-		printf("%s\n", str[i]);
+		printf("[%s]\n", str[i]);
 		i++;
 	}
 }
@@ -58,4 +58,15 @@ int	longest_line(char **map)
 			i++;
 	}
 	return ((int)len);
+}
+
+int	encode_rgb(int red, int green, int blue)
+{
+	int hex;
+
+	hex = 0;
+	hex |= ((red / 16) << 28) | ((red % 16) << 24);
+	hex |= ((green / 16) << 20) | ((green % 16) << 16);
+	hex |= ((blue / 16) << 12) | ((blue% 16) << 8);
+	return (hex);
 }

@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:01:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/03/31 15:56:18 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/17 02:42:55 by yjaadoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ int	skip_spaces_begin(char *str)
 	return (i);
 }
 
-void	color_textures(t_map *map)
+void	check_null(t_map *map)
+{
+	if (!map->we_path || !map->no_path || !map->so_path
+		|| !map->ea_path || !map->f_color || !map->c_color)
+		exit_error("ERROR : wrong map element ");
+}
+
+void	filling_color_textures(t_map *map)
 {
 	int	j;
 	int	i;
@@ -38,21 +45,22 @@ void	color_textures(t_map *map)
 	{
 		j = skip_spaces_begin(map->line[i]);
 		if (!ft_strncmp((map->line[i] + j), "WE ", 3))
-			map->we_path = ft_strdup(map->line[i] + j);
+			map->we_path = check_textures(map->line[i] + j);
 		else if (!ft_strncmp((map->line[i] + j), "NO ", 3))
-			map->no_path = ft_strdup(map->line[i] + j);
+			map->no_path = check_textures(map->line[i] + j);
 		else if (!ft_strncmp((map->line[i] + j), "SO ", 3))
-			map->so_path = ft_strdup(map->line[i] + j);
+			map->so_path = check_textures(map->line[i] + j);
 		else if (!ft_strncmp((map->line[i] + j), "EA ", 3))
-			map->ea_path = ft_strdup(map->line[i] + j);
+			map->ea_path = check_textures(map->line[i] + j);
 		else if (!ft_strncmp((map->line[i] + j), "F ", 2))
-			map->f_color = ft_strdup(map->line[i] + j);
+			map->f_color = check_co(map->line[i] + j);
 		else if (!ft_strncmp((map->line[i] + j), "C ", 2))
-			map->c_color = ft_strdup(map->line[i] + j);
+			map->c_color = check_co(map->line[i] + j);
 		else
 			exit_error("ERROR : wrong elements in map\n");
 		i++;
 	}
+	check_null(map);
 }
 
 void	filling_map(t_map *map)
@@ -66,6 +74,7 @@ void	filling_map(t_map *map)
 	map->map = malloc(sizeof(char *) * map->len);
 	while (map->line[i] != NULL)
 	{
+		check_empty_line(map->line[i]);
 		map->map[j] = ft_strdup(map->line[i]);
 		i++;
 		j++;
@@ -75,8 +84,10 @@ void	filling_map(t_map *map)
 
 void	map_elements(t_map *map)
 {
-	color_textures(map);
+	filling_color_textures(map);
 	filling_map(map);
+	check_elements(map->map);
 	player_position(map);
+	check_border(map);
 	map->long_line = longest_line(map->map);
 }

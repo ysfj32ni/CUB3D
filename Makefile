@@ -17,6 +17,8 @@ SRC = cub.c \
 	parsing/reading_map.c \
 	parsing/errors_handler.c \
 	parsing/parisng.c \
+	parsing/textures.c \
+	parsing/colores.c \
 	drawing/2d_map.c \
 	drawing/mlx_functions.c \
 	drawing/window.c \
@@ -27,9 +29,9 @@ SRC = cub.c \
 	
 NAME = cub3D
 
-CC = cc
+CC = cc -g3
 
-CFLAGS = -Wall -Wextra -Werror  -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
