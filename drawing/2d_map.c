@@ -79,8 +79,15 @@ void dala(t_data *img , double ray, double *x, int color, double r)
 	double distance = (1050 / 2 ) * tan(M_PI / 6);
 	double wall = distance / ((ray ) ) ;
 		wall *= 2;
+
+	if (wall >= 1050)
+		wall = 1050 * 2;
+
 	double y = (1050  / 2 ) - (wall / 2) ;
+	(void)r;
 	double i = (r) * (img->t.w);
+	
+	
 	while(y < (1050 / 2) + (wall / 2 )  )
 	{
 		double j = (y - (1050  / 2 ) + (wall / 2)) * (img->t.h / wall);
@@ -89,6 +96,7 @@ void dala(t_data *img , double ray, double *x, int color, double r)
 		color = *(unsigned int*)dst;
 		my_mlx_pixel_put(img,*x,y, color);
 		y += 1;
+		j++;
 	}
 }
 

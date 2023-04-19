@@ -358,7 +358,7 @@ t_data	*init_func(t_data *img)
 	img->mlx = mlx_init();
 	img->win = mlx_new_window(img->mlx, 1050, 1050, "Hello");
 	img->img = mlx_new_image(img->mlx, 1050, 1050);
-	img->t.img = mlx_xpm_file_to_image(img->mlx,"/Users/yjaadoun/Downloads/istockphoto-1220096007-612x612.xpm", 
+	img->t.img = mlx_xpm_file_to_image(img->mlx,"/Users/wlahyani/Desktop/cub3/images/istockphoto-1220096007-612x612(1).xpm", 
 		&img->t.w, &img->t.h);
 	return (img);
 }
