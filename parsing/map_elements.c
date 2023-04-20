@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:01:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/17 02:42:55 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/20 01:43:35 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	filling_color_textures(t_map *map)
 		else if (!ft_strncmp((map->line[i] + j), "EA ", 3))
 			map->ea_path = check_textures(map->line[i] + j);
 		else if (!ft_strncmp((map->line[i] + j), "F ", 2))
-			map->f_color = check_co(map->line[i] + j);
+			map->f_color = check_colors(map->line[i] + j);
 		else if (!ft_strncmp((map->line[i] + j), "C ", 2))
-			map->c_color = check_co(map->line[i] + j);
+			map->c_color = check_colors(map->line[i] + j);
 		else
 			exit_error("ERROR : wrong elements in map\n");
 		i++;

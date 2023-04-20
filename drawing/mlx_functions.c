@@ -3,41 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:39:06 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/19 03:24:32 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/20 02:21:07 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
-
-int	move_player(int keycode, t_data *img)
-{
-	if (keycode == W_KEY)
-		move_player_w(img);
-	if (keycode == A_KEY)
-		move_player_a(img);
-	if (keycode == D_KEY)
-		move_player_d(img);
-	if (keycode == S_KEY)
-		move_player_s(img);
-	if (keycode == ESC_KEY)
-		close_window(img);
-	if (keycode == 124)
-		turn_right(img);
-	if (keycode == 123)
-		turn_left(img);
-	
-	draw_world(img);
-	cast_rays(img);
-	
-	// debug(img);	
-	// draw_map(img);
-	
-
-	return (0);
-}
 
 int	comp(float z, float y)
 {
@@ -230,7 +203,6 @@ double cast_rays4(t_data *img, float view ,double *r)
 						if(img->map->map[next_y - 1  ][next_x ] == '1')	
 						{
 								*r = ( img->map->x  - rx) - (int ) ( img->map->x  - rx);
-								// printf(" r = %f && ry = %f \n" , rx  , ry );
 								break;
 						}		
 					}

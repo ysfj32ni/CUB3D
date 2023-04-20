@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+         #
+#    By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 12:10:58 by yjaadoun          #+#    #+#              #
-#    Updated: 2023/04/13 15:14:45 by yjaadoun         ###   ########.fr        #
+#    Updated: 2023/04/20 02:47:11 by wlahyani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRC = cub.c \
 	drawing/window.c \
 	drawing/player_movements.c \
 	drawing/cast_rays.c \
+	drawing/rotation.c \
+	drawing/textures.c \
 
 	
 NAME = cub3D

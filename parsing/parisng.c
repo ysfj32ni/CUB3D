@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parisng.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 13:56:12 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/17 02:45:59 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/20 02:03:08 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,28 @@ void	initialisation(t_map *map)
 	map->len = 0;
 }
 
-void	replace_space(char	**map, int	len)
+void	fill_back(char **map, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i] != NULL)
+	{
+		j = 0;
+		if (ft_strlen(map[i]) < (size_t)len)
+		{
+			while ((size_t)j < ft_strlen(map[i]) - (size_t)len)
+			{
+				map[i] = ft_strjoin(map[i], "1");
+				j++;
+			}
+		}
+		i++;
+	}
+}
+
+void	replace_space(char **map, int len)
 {
 	int	i;
 	int	j;
@@ -43,20 +64,7 @@ void	replace_space(char	**map, int	len)
 		}
 		i++;
 	}
-	i = 0;
-	while (map[i] != NULL)
-	{
-		j = 0;
-		if (ft_strlen(map[i]) < (size_t)len)
-		{
-			while ((size_t)j < ft_strlen(map[i]) - (size_t)len)
-			{
-				map[i] = ft_strjoin(map[i] , "1");
-				j++;
-			}
-		}
-		i++;
-	}
+	fill_back(map, len);
 }
 
 t_map	*parsing(char *av)
@@ -68,6 +76,5 @@ t_map	*parsing(char *av)
 	map->line = get_map(av);
 	map_elements(map);
 	replace_space(map->map, map->long_line);
-	// print_2d(map->map);
 	return (map);
 }
