@@ -6,48 +6,52 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:10:10 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 02:49:42 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:02:46 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
+		// if(!img->ea.w)
+		// 	exit_error("ERROR : MLX");
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
-	if ((x >= 0 && x < 1050 ) && (y >= 0 && y <  1050))
+	if ((x >= 0 && x < 1050) && (y >= 0 && y < 1050))
 	{
-		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+		dst = data->addr + (y * data->line_length + x
+				* (data->bits_per_pixel / 8));
 		*(unsigned int *)dst = color;
 	}
 }
 
-void dala(t_data *img , double ray, int side, double r)
+void	dala(t_data *img, double ray, int side, double r)
 {
+	double	distance;
+	double	wall;
+	double	y;
+	double	j;
+	int		color;
+
 	ray = ray * cos(img->map->angle - (img->map->view + (M_PI / 6)));
-	double distance = (1050 / 2 ) * tan(M_PI / 6);
-	double wall = distance / ((ray ) ) ;
-	wall *= 2;
-	int color = 0xFFFFFF;
-	double y = (1050  / 2 ) - (wall / 2) ;
-	while(y < (1050 / 2) + (wall / 2 )  )
+	distance = (1050 / 2) * tan(M_PI / 6);
+	wall = (distance / ray) * 2;
+	color = 0xFFFFFF;
+	y = (1050 / 2) - (wall / 2);
+	while (y < (1050 / 2) + (wall / 2))
 	{
-		double j = (y - (1050  / 2 ) + (wall / 2)) * (img->ea.h / wall);
-		if(!img->ea.w)
-			exit_error("ERROR : MLX");
-		
-		if(side == 1)
+		j = (y - (1050 / 2) + (wall / 2)) * (img->ea.h / wall);
+		if (side == 1)
 			color = no_texture(img, j, r);
-		if(side == 2)
+		else if (side == 2)
 			color = ea_texture(img, j, r);
-		if(side == 3)
+		else if (side == 3)
 			color = we_texture(img, j, r);
-		if(side == 4)
-			color = so_texture(img, j, r);	
-		my_mlx_pixel_put(img,img->map->index,y, color);
+		else if (side == 4)
+			color = so_texture(img, j, r);
+		my_mlx_pixel_put(img, img->map->index, y, color);
 		y += 1;
-		j++;
 	}
 }
 
@@ -59,7 +63,7 @@ void	draw_world(t_data *img)
 
 	i = 0;
 	color = img->map->c_color;
-	while (i < 1050 )
+	while (i < 1050)
 	{
 		if (i > 1050 / 2)
 			color = img->map->f_color;

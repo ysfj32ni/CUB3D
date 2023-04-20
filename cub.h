@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:11:15 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 02:45:39 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:18:49 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,19 @@
 # define D_KEY 2
 # define ESC_KEY 53
 
+
 typedef int	t_bool;
+
+typedef struct s_ray
+{
+	float	ry;
+	float	rx;
+	int		line;
+	float	ray;
+	int		next_x;
+	int		next_y;
+}	t_ray;
+	
 typedef struct s_tex
 {
 	void	*img;
