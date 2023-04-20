@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 13:36:44 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 05:46:53 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 06:28:25 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-//# define BUFFER_SIZE 1
 
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -53,7 +52,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-char	*get_next_line(int fd);
 char	*ft_get_line(char *save, int i);
 char	*read_and_save(int fd, char *save);
 char	*ft_saving(char *save);
