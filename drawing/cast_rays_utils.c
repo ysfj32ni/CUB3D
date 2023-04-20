@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 07:11:50 by wlahyani          #+#    #+#             */
-/*   Updated: 2023/04/20 07:12:45 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:01:38 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,108 +39,110 @@ double	cast_rays1(t_data *img, float view, double *r)
 	return (ray1.ray);
 }
 
-double	cast_rays2(t_data *img , float view , double *r)
+double	cast_rays2(t_data *img, float view, double *r)
 {
-	t_ray  ray;
-	
+	t_ray	ray;
+
 	if (init_val2(img, &ray, view))
 	{
-			*r = ((img->map->y - ray.ry) - (int) (img->map->y - ray.ry))  ;
-				return (ray.ray);
+		*r = ((img->map->y - ray.ry) - (int)(img->map->y - ray.ry));
+		return (ray.ray);
 	}
-	 	while(TRUE)
-		{	
-				iteration2(img,&ray,view);
-				if((ray.next_y < ((img->height / 50)) && ray.next_y > 0) && (ray.next_x < (img->width / 50 ) && ray.next_x >= 0))
-				{
-					if(img->map->map[ray.next_y ][ray.next_x ] == '1')	
-					{
-						*r = ((img->map->y - ray.ry) - (int) (img->map->y - ray.ry))  ;
-						break;		
-					}
-				}
-				else
-					break;
-		} 		
+	while (TRUE)
+	{
+		iteration2(img, &ray, view);
+		if ((ray.next_y < ((img->height / 50)) && ray.next_y > 0)
+			&& (ray.next_x < (img->width / 50) && ray.next_x >= 0))
+		{
+			if (img->map->map[ray.next_y][ray.next_x] == '1')
+			{
+				*r = ((img->map->y - ray.ry) - (int)(img->map->y - ray.ry));
+				break ;
+			}
+		}
+		else
+			break ;
+	}
 	return (ray.ray);
 }
 
-
-double cast_rays3(t_data *img, float view , double *r)
+double	cast_rays3(t_data *img, float view, double *r)
 {
-	t_ray  ray;
-	
+	t_ray	ray;
+
 	if (init_val3(img, &ray, view))
 	{
-			*r = ((img->map->y - ray.ry) - (int) (img->map->y - ray.ry));
-				return (ray.ray);	
+		*r = ((img->map->y - ray.ry) - (int)(img->map->y - ray.ry));
+		return (ray.ray);
 	}
-	 	while(TRUE)
-		{	
-	 			iteration3(img, &ray, view);
-				if((ray.next_y < ((img->height / 50)) && ray.next_y > 0) && (ray.next_x < (img->width / 50 ) && ray.next_x >= 0))
-				{
-					if(img->map->map[ray.next_y ][ray.next_x -  1] == '1')
-						{
-							*r = ((img->map->y - ray.ry) - (int) (img->map->y - ray.ry)); 
-							break;
-						}			
-				}
-				else
-					break;
-		}	
+	while (TRUE)
+	{	
+		iteration3(img, &ray, view);
+		if ((ray.next_y < ((img->height / 50)) && ray.next_y > 0)
+			&& (ray.next_x < (img->width / 50) && ray.next_x >= 0))
+		{
+			if (img->map->map[ray.next_y][ray.next_x - 1] == '1')
+			{
+				*r = ((img->map->y - ray.ry) - (int)(img->map->y - ray.ry));
+				break ;
+			}
+		}
+		else
+			break ;
+	}
 	return (ray.ray);
 }
 
-
-double cast_rays4(t_data *img, float view ,double *r)
+double	cast_rays4(t_data *img, float view, double *r)
 {	
-	t_ray ray;
-	
-		if(init_val4(img, &ray, view))
+	t_ray	ray;
+
+	if (init_val4(img, &ray, view))
+	{
+		*r = (img->map->x - ray.rx) - (int)(img->map->x - ray.rx);
+		return (ray.ray);
+	}
+	while (TRUE)
+	{
+		iteration4(img, &ray, view);
+		if ((ray.next_y < ((img->height / 50)) && ray.next_y > 0)
+			&& (ray.next_x < (img->width / 50) && ray.next_x >= 0))
 		{
-			*r = ( img->map->x  - ray.rx) - (int ) ( img->map->x  - ray.rx);
-			return (ray.ray);
+			if (img->map->map[ray.next_y - 1][ray.next_x] == '1')
+			{
+				*r = (img->map->x - ray.rx) - (int)(img->map->x - ray.rx);
+				break ;
+			}
 		}
-			while (TRUE)
-			 {	
-					iteration4(img, &ray,view);
-					if((ray.next_y < ((img->height / 50)) && ray.next_y > 0) && (ray.next_x < (img->width / 50 ) && ray.next_x >= 0))
-					{
-						if(img->map->map[ray.next_y - 1  ][ray.next_x ] == '1')	
-						{
-								*r = ( img->map->x  - ray.rx) - (int ) ( img->map->x  - ray.rx);
-								break;
-						}		
-					}
-					else
-						break;	
-			 }
+		else
+			break ;
+	}
 	return (ray.ray);
 }
 
-double cast_rays5(t_data *img, float view ,double *r)
-{	
-	t_ray ray ;
-	
-		if(init_val5(img, &ray, view))
+double	cast_rays5(t_data *img, float view, double *r)
+{
+	t_ray	ray;
+
+	if (init_val5(img, &ray, view))
+	{
+		*r = ((img->map->x - ray.rx) - (int)(img->map->x - ray.rx));
+		return (ray.ray);
+	}
+	while (TRUE)
+	{				
+		iteration5(img, &ray, view);
+		if ((ray.next_y < ((img->height / 50)) && ray.next_y > 0)
+			&& (ray.next_x < (img->width / 50) && ray.next_x >= 0))
 		{
-			*r = (( img->map->x  - ray.rx) - (int ) ( img->map->x  - ray.rx)  );
-			return ray.ray;
+			if (img->map->map[ray.next_y][ray.next_x] == '1')
+			{
+				*r = ((img->map->x - ray.rx) - (int)(img->map->x - ray.rx));
+				break ;
+			}
 		}
-			while (TRUE)
-			 {				
-					iteration5(img,&ray, view);
-					if((ray.next_y < ((img->height / 50)) && ray.next_y > 0) && (ray.next_x < (img->width / 50 ) && ray.next_x >= 0))
-					{
-						if(img->map->map[ray.next_y ][ray.next_x ] == '1')
-						{
-							*r = (( img->map->x  - ray.rx) - (int ) ( img->map->x  - ray.rx)  );
-							break;
-						}		
-					}
-					else
-						break;
-			 }
+		else
+			break ;
+	}
 	return (ray.ray);
 }

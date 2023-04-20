@@ -16,7 +16,6 @@ int	main(int ac, char **av)
 {
 	t_data	img;
 
-	 //img.map = malloc(sizeof(t_map *));
 	if (ac == 2)
 	{
 		if (!check_path(av[1], TRUE))

@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 13:56:12 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 06:24:30 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:18:16 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	initialisation(t_map *map)
 
 void	fill_back(char **map, int len)
 {
-	int	i;
-	int	j;
-	char *tmp;
-	
+	char	*tmp;
+	int		i;
+	int		j;
+
 	i = 0;
 	while (map[i] != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:01:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 06:24:17 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:17:09 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void	filling_map(t_map *map)
 void	map_elements(t_map *map)
 {
 	filling_color_textures(map);
-	 filling_map(map);
-	 check_elements(map->map);
+	filling_map(map);
+	check_elements(map->map);
 	player_position(map);
 	check_border(map);
 	map->long_line = longest_line(map->map);

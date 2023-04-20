@@ -6,13 +6,11 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:10:10 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 03:02:46 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 07:45:03 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
-		// if(!img->ea.w)
-		// 	exit_error("ERROR : MLX");
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {

@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:57:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 06:25:06 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:19:10 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**get_map(char *av)
 {
 	char	*buf;
 	char	*current;
-	char *tmp; (void) tmp;
+	char	*tmp;
 	int		fd;
 	t_bool	n;
 

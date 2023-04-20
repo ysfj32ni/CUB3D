@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wlahyani <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 21:31:04 by wlahyani          #+#    #+#             */
-/*   Updated: 2023/04/20 05:46:34 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:21:01 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
+# define BUFFER_SIZE 42 
 
-#define BUFFER_SIZE 42 
 char	*get_next_line(int fd);
 int		ft_g_strchr(const char *str, int c);
 char	*ft_strdup(const char *s1);
