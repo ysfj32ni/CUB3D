@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 00:21:48 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/16 17:46:54 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/20 05:23:31 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,31 @@ t_bool	check_path(char *av, t_bool a)
 	else
 		return (FALSE);
 }
-
+void ft_free(char **str)
+{
+	int i;
+	
+	i = 0;
+	while(str[i])
+		free(str[i++]);
+	free(str);
+}
 char	*check_textures(char *path)
 {
 	char	**str;
+	char	*tmp;
 
 	str = ft_split(path, ' ');
+	
 	if (str[1] && !check_path(str[1], FALSE))
+	{
 		exit_error("ERROR : PATH must be *.xpm\n");
+		return (NULL);
+	}
 	else
-		return (str[1]);
-	return (str[1]);
+	{
+		tmp = ft_strdup(str[1]);
+		ft_free(str);	
+		return (tmp);
+	}
 }

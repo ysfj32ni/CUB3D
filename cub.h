@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:11:15 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 03:18:49 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 05:41:28 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define D_KEY 2
 # define ESC_KEY 53
 
+#include "./get_next_line/get_next_line.h"
 
 typedef int	t_bool;
 
@@ -171,5 +172,5 @@ unsigned int	ea_texture(t_data *img, double x, double y);
 unsigned int	no_texture(t_data *img, double x, double y);
 unsigned int	we_texture(t_data *img, double x, double y);
 unsigned int	so_texture(t_data *img, double x, double y);
-
+void ft_free(char **str);
 #endif

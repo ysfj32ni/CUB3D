@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:54:41 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 02:27:54 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 04:44:14 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ void	move_player_w(t_data *img)
 
 	y = img->map->y;
 	x = img->map->x;
-	img->map->y -= sin(img->map->angle - (M_PI / 6)) * 0.5;
-	img->map->x += cos(img->map->angle - (M_PI / 6)) * 0.5;
-	if (img->map->map[(int)img->map->y][(int)img->map->x] == '1')
+	img->map->y -= sin(img->map->angle - (M_PI / 6)) / 5 ;
+	img->map->x += cos(img->map->angle - (M_PI / 6))  / 5;
+
+
+	if (img->map->map[(int)(img->map->y)][(int)img->map->x] == '1')
 	{
 		img->map->y = y ;
 		img->map->x = x ;
@@ -72,8 +74,8 @@ void	move_player_a(t_data *img)
 
 	y = img->map->y;
 	x = img->map->x;
-	img->map->y += sin(img->map->angle - ((M_PI / 2) + (M_PI / 6)));
-	img->map->x -= cos(img->map->angle - ((M_PI / 2) + (M_PI / 6)));
+	img->map->y += sin(img->map->angle - ((M_PI / 2) + (M_PI / 6))) / 10 ;
+	img->map->x -= cos(img->map->angle - ((M_PI / 2) + (M_PI / 6))) / 10;
 	if (img->map->map[(int)img->map->y][(int)img->map->x] == '1' )
 	{
 		img->map->y = y ;
@@ -88,8 +90,8 @@ void	move_player_d(t_data *img)
 
 	y = img->map->y;
 	x = img->map->x;
-	img->map->y -= sin(img->map->angle - ((M_PI / 2) + (M_PI / 6)));
-	img->map->x += cos(img->map->angle - ((M_PI / 2) + (M_PI / 6)));
+	img->map->y -= sin(img->map->angle - ((M_PI / 2) + (M_PI / 6))) /10;
+	img->map->x += cos(img->map->angle - ((M_PI / 2) + (M_PI / 6)))/ 10;
 	if (img->map->map[(int)img->map->y][(int)img->map->x] == '1')
 	{
 		img->map->y = y;

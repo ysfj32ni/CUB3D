@@ -6,7 +6,7 @@
 #    By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 12:10:58 by yjaadoun          #+#    #+#              #
-#    Updated: 2023/04/20 02:47:11 by wlahyani         ###   ########.fr        #
+#    Updated: 2023/04/20 05:40:23 by wlahyani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,14 @@ SRC = cub.c \
 	drawing/cast_rays.c \
 	drawing/rotation.c \
 	drawing/textures.c \
-
+	get_next_line/get_next_line.c\
+	get_next_line/get_next_line_utils.c
 	
 NAME = cub3D
 
-CC = cc -g3
+CC = cc #-g3
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 

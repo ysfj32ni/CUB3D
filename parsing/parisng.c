@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 13:56:12 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 02:03:08 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 06:24:30 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	fill_back(char **map, int len)
 {
 	int	i;
 	int	j;
-
+	char *tmp;
+	
 	i = 0;
 	while (map[i] != NULL)
 	{
@@ -39,7 +40,9 @@ void	fill_back(char **map, int len)
 		{
 			while ((size_t)j < ft_strlen(map[i]) - (size_t)len)
 			{
+				tmp = map[i];
 				map[i] = ft_strjoin(map[i], "1");
+				free(tmp);
 				j++;
 			}
 		}

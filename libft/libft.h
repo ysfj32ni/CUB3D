@@ -6,7 +6,7 @@
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 13:36:44 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/15 02:43:13 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/20 05:46:53 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define BUFFER_SIZE 1
+//# define BUFFER_SIZE 1
 
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
