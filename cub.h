@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:11:15 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 05:41:28 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 06:53:12 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,5 +172,17 @@ unsigned int	ea_texture(t_data *img, double x, double y);
 unsigned int	no_texture(t_data *img, double x, double y);
 unsigned int	we_texture(t_data *img, double x, double y);
 unsigned int	so_texture(t_data *img, double x, double y);
+void	iteration1(t_data *img, t_ray *ray1, float view);
+void	iteration2(t_data *img, t_ray *ray, float view);
+void	iteration3(t_data *img, t_ray *ray1, float view);
+void	iteration4(t_data *img, t_ray *ray1, float view);
+void	iteration5(t_data *img, t_ray *ray1, float view);
+void	iteration6(t_data *img, t_ray *ray1, float view);
+int		init_val1(t_data *img, t_ray *ray1, float view);
+int		init_val2(t_data *img, t_ray *ray, float view);
+int		init_val3(t_data *img, t_ray *ray, float view);
+int		init_val4(t_data *img, t_ray *ray, float view);
+int		init_val5(t_data *img, t_ray *ray, float view);
+int		init_val6(t_data *img, t_ray *ray, float view);
 void ft_free(char **str);
 #endif
