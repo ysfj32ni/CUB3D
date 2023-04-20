@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:39:06 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 07:20:17 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:29:05 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_data	*init_func(t_data *img)
 {
 	img->height = (img->map->len - 1) * 50;
 	img->width = (img->map->long_line) * 50;
-	img->map->y = img->map->y_player;
-	img->map->x = img->map->x_player;
+	img->map->y = img->map->y_player + 0.5;
+	img->map->x = img->map->x_player + 0.5;
 	img->mlx = mlx_init();
 	img->win = mlx_new_window(img->mlx, 1050, 1050, "CUB3D");
 	img->img = mlx_new_image(img->mlx, 1050, 1050);

@@ -6,7 +6,7 @@
 #    By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 12:10:58 by yjaadoun          #+#    #+#              #
-#    Updated: 2023/04/20 07:16:51 by wlahyani         ###   ########.fr        #
+#    Updated: 2023/04/20 09:20:18 by wlahyani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,9 @@ SRC = cub.c \
 	
 NAME = cub3D
 
-CC = cc #-g3
+CC = cc
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
@@ -58,8 +58,3 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
-	
-git :
-	git add .
-	git commit -m "CUB3D_dailly_work"
-	git push

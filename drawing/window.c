@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window->c                                           :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 19:17:42 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/01 14:45:40 by yjaadoun         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:26:33 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-// void	open_window(t_data *game)
-// {
-// 	game->win = mlx_new_window(game->mlx, game->w * 50, game->h * 50,
-// 			"SoLong By Yjaadoun");
-// 	if (game->win == NULL)
-// 	{
-// 		free_map(game);
-// 		free(game->mlx);
-// 		exit(0);
-// 	}
-// }
-
 void	close_window(t_data *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
-	// free_map(game);
-	// free(game->mlx);
 	exit(0);
 }
 
@@ -39,8 +25,7 @@ int	esc_key(int key, t_data *game)
 	return (0);
 }
 
-
-int	cross_key()
+int	cross_key(void)
 {
 	exit(1);
 }

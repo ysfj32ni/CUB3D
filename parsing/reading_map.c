@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:57:36 by yjaadoun          #+#    #+#             */
-/*   Updated: 2023/04/20 08:19:10 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 09:15:57 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ char	**split_map(char *buf)
 		exit_error("ERROR : Empty file\n");
 	free(buf);
 	return (line);
+}
+
+void	f_free(void *tmp, void *current)
+{
+	free(tmp);
+	free(current);
 }
 
 char	**get_map(char *av)
@@ -45,8 +51,7 @@ char	**get_map(char *av)
 			exit_error("ERROR : map not valid");
 		tmp = buf;
 		buf = ft_strjoin(buf, current);
-		free(tmp);
-		free(current);
+		f_free(tmp, current);
 		current = get_next_line(fd);
 	}
 	free(current);
