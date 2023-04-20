@@ -6,7 +6,7 @@
 /*   By: wlahyani <wlahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 06:38:51 by wlahyani          #+#    #+#             */
-/*   Updated: 2023/04/20 07:26:53 by wlahyani         ###   ########.fr       */
+/*   Updated: 2023/04/20 07:28:42 by wlahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	iteration4(t_data *img, t_ray *ray, float view)
 {
 	ray->ry += 1;
 	ray->rx = fabs((fabs(ray->ry) / tan(M_PI - view)));
-	ray->next_x = floor(img->map->x - ray->rx );
+	ray->next_x = floor(img->map->x - ray->rx);
 	ray->next_y = floor(img->map->y - ray->ry);
-	ray->ray =  sqrt((pow(ray->ry,2) + pow(ray->rx,2)));
+	ray->ray = sqrt(pow(ray->ry, 2) + pow(ray->rx, 2));
 }
 
 void	iteration5(t_data *img, t_ray *ray, float view)
